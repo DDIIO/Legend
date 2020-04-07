@@ -100,40 +100,40 @@ if not msg.Director then
 return "هـذا الامر يخص المدير,المنشئ,المطور, فقط  \n"
 end
 redis:set(legend.."getidstatus"..msg.chat_id_, "Simple")
-return  " -> أهلًا "..msg.TheRankCmd.."\n تم تعطيل الايدي بالصوره  " 
+return  "🙋🏼‍♂️*╿* أهلا عزيزي "..msg.TheRankCmd.."\n📡*╽* تم تعطيل الايدي بالصوره  \n✓" 
 end 
 function unlock_photos(msg)
 if not msg.Director then
-return "هـذا الامر يخص المدير,المنشئ,المطور, فقط  "
+return "هـذا الامر يخص المدير,المنشئ,المطور, فقط  \n🚶"
 end
 redis:set(legend.."getidstatus"..msg.chat_id_, "Photo")
-return  "-> أهلًا عزيزي "..msg.TheRankCmd.."  تم تفعيل الايدي بالصوره .  " 
+return  "🙋🏼‍♂️*╿* أهلا عزيزي "..msg.TheRankCmd.."\n📡*╽* تم تفعيل الايدي بالصوره \n✓" 
 end
 function cmds_on(msg)
 if not msg.Creator then return "هـذا الامر يخص المنشئ,المطور, فقط  \n"
 end
 redis:set(legend..'lock:kara:'..msg.chat_id_,'on')
-return "-> أهلًا عزيزي "..msg.TheRankCmd.." تم تعطيل الرفع في المجموعه ."
+return "🙋🏼‍♂️*╿* أهلا عزيزي "..msg.TheRankCmd.."\n📡*╽* تم تعطيل الرفع في المجموعه \n✓"
 end
 function cmds_off(msg)
-if not msg.Creator then return "هـذا الامر يخص المنشئ,المطور, فقط  "
+if not msg.Creator then return "هـذا الامر يخص المنشئ,المطور, فقط  \n"
 end
 redis:set(legend..'lock:kara:'..msg.chat_id_,'off')
-return "-> أهلًا عزيزي "..msg.TheRankCmd.."تم تفعيل الرفع في المجموعه .  "
+return "🙋🏼‍♂️*╿* أهلا عزيزي "..msg.TheRankCmd.."\n📡*╽* تم تفعيل الرفع في المجموعه \n✓"
 end
 
 function lockjoin(msg)
-if not msg.Admin then return "-> هـذا الامر يخص الادمن,المدير,المنشئ,المطور فقط . "
+if not msg.Admin then return "هـذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n"
 end
 redis:set(legend..'lock:join:'..msg.chat_id_,true)
-return "-> أهلًا عزيزي *"..msg.TheRankCmd.." تم قفل الدخول بالرابط ." 
+return "*🙋🏼‍♂️*╿* أهلا عزيزي *"..msg.TheRankCmd.."*\n📡*╽* تم قفل الدخول بالرابط \n✓*" 
 
 end
 function unlockjoin(msg)
-if not msg.Admin then return " -> هـذا الامر يخص الادمن,المدير,المنشئ,المطور فقط  ."
+if not msg.Admin then return "هـذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n"
 end
 redis:del(legend..'lock:join:'..msg.chat_id_)
-return "-> أهلًا عزيزي *"..msg.TheRankCmd.."  تم فتح الدخول بالرابط ." 
+return "*🙋🏼‍♂️*╿* أهلا عزيزي *"..msg.TheRankCmd.."*\n📡*╽* تم فتح الدخول بالرابط \n✓*" 
 end
 
 
@@ -277,6 +277,7 @@ elseif tonumber(check_time) > 31536000 then
 remained_expire = '💳│`باقي من الاشتراك ` » » * \n 📆│ '..year..'* سنه و *'..month..'* شهر و *'..day..'* يوم و *'..hours..'* ساعه و *'..min..'* دقيقه و *'..sec..'* ثانيه' end
 return remained_expire
 end
+
 
 
 if MsgText[1] == "المجموعه" then
