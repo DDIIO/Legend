@@ -533,7 +533,7 @@ end
 	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/Script.lua','./inc/Script.lua')
 	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/functions.lua','./inc/functions.lua')
 	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/locks.lua','./inc/locks.lua')
-	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/plugins/zhrfa.lua','./plugins/rADMIN.lua')
 	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/plugins/games.lua','./plugins/games.lua')
 	sendMsg(msg.chat_id_,msg.id_,'👷🏽| {* تــم تحديث وتثبيت السورس  *} 📡.\n\n👨🏼‍💼| { Bot is Update » }👍🏿',nil,function(arg,data)
 	dofile("./inc/Run.lua")
