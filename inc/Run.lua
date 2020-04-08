@@ -249,31 +249,31 @@ msg.GroupActive = false
 end
 
 if msg.sender_user_id_ == SUDO_ID then 
-msg.TheRankCmd = 'المطور 👨🏻‍✈️' 
-msg.TheRank = 'مطور اساسي 👨🏻‍✈️' 
+msg.TheRankCmd = 'المطور'
+msg.TheRank = 'مطور اساسي'
 msg.Rank = 1
 elseif redis:sismember(legend..':SUDO_BOT:',msg.sender_user_id_) then 
-msg.TheRankCmd = 'المطور 👨🏽‍💻'
-msg.TheRank = 'مطور البوت 👨🏽‍💻'
+msg.TheRankCmd = 'المطور'
+msg.TheRank = 'مطور البوت'
 msg.Rank = 2
 elseif msg.GroupActive and redis:sismember(legend..':KARA_BOT:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = 'المنشىء الاساسي👷🏽'
-msg.TheRank = 'المنشىء الاساسي👷🏽 '
+msg.TheRankCmd = 'المنشىء الاساسي'
+msg.TheRank = 'المنشىء الاساسي'
 msg.Rank = 3
 elseif msg.GroupActive and redis:sismember(legend..':MONSHA_BOT:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = 'المنشىء 👷🏽'
-msg.TheRank = 'المنشىء 👷🏽'
+msg.TheRankCmd = 'المنشىء'
+msg.TheRank = 'المنشىء'
 msg.Rank = 4
 elseif msg.GroupActive and redis:sismember(legend..'owners:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = 'المدير 👨🏼‍⚕️' 
-msg.TheRank = 'مدير البوت 👨🏼‍⚕️' 
+msg.TheRankCmd = 'المدير'
+msg.TheRank = 'مدير البوت'
 msg.Rank = 5
 elseif msg.GroupActive and redis:sismember(legend..'admins:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = 'الادمن 👨🏼‍🎓'
-msg.TheRank = 'ادمن في البوت 👨🏼‍🎓'
+msg.TheRankCmd = 'الادمن'
+msg.TheRank = 'ادمن في البوت'
 msg.Rank = 6
 elseif msg.GroupActive and redis:sismember(legend..'whitelist:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRank = 'عضو مميز ⭐️'
+msg.TheRank = 'عضو مميز'
 msg.Rank = 7
 elseif msg.GroupActive and redis:sismember(legend..'kadye:'..msg.chat_id_,msg.sender_user_id_) then 
 msg.TheRank = 'مـلاك'
@@ -287,7 +287,7 @@ msg.Rank = 8
 elseif msg.sender_user_id_ == our_id then
 msg.Rank = 8
 else
-msg.TheRank = 'فقط عضو 🙍🏼‍♂️'
+msg.TheRank = 'فقط عضو'
 msg.Rank = 11
 end
  
@@ -485,15 +485,15 @@ function tdcli_update_callback(data)
 	UpdateSourceStart = false
 	EditMsg(data.message_.chat_id_,data.message_.id_,'10% - |█          |')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'20% - |███         |')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/inc/Run.lua','./inc/Run.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/Run.lua','./inc/Run.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'40% - |█████       |')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/inc/locks.lua','./inc/locks.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/locks.lua','./inc/locks.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'60% - |███████     |')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/inc/Script.lua','./inc/Script.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/Script.lua','./inc/Script.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'80% - |█████████   |')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/inc/functions.lua','./inc/functions.lua')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/plugins/games.lua','./plugins/games.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/functions.lua','./inc/functions.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/plugins/games.lua','./plugins/games.lua')
 	EditMsg(data.message_.chat_id_,data.message_.id_,'100% - |█████████████|\n\n🔝*¦* السورس الى اصدار \n📟*¦* تم اعاده تشغيل السورس بنجاح')
 	dofile("./inc/Run.lua")
 	print("Update Source And Reload ~ ./inc/Run.lua")
@@ -529,12 +529,12 @@ end
 	end)
 	end 
 	if msg.text== 'Update Source' and msg.sender_user_id_ == SUDO_ID then
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/inc/Run.lua','./inc/Run.lua')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/inc/Script.lua','./inc/Script.lua')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/inc/functions.lua','./inc/functions.lua')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/inc/locks.lua','./inc/locks.lua')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
-	download_file('https://raw.githubusercontent.com/legendTELEE/legend/master/plugins/games.lua','./plugins/games.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/Run.lua','./inc/Run.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/Script.lua','./inc/Script.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/functions.lua','./inc/functions.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/inc/locks.lua','./inc/locks.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/plugins/zhrfa.lua','./plugins/zhrfa.lua')
+	download_file('https://raw.githubusercontent.com/DDIIO/legend/master/plugins/games.lua','./plugins/games.lua')
 	sendMsg(msg.chat_id_,msg.id_,'👷🏽| {* تــم تحديث وتثبيت السورس  *} 📡.\n\n👨🏼‍💼| { Bot is Update » }👍🏿',nil,function(arg,data)
 	dofile("./inc/Run.lua")
 	print("Reload ~ ./inc/Run.lua")
