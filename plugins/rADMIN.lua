@@ -41,7 +41,7 @@ tdcli_function ({ID = "GetUser",user_id_ = user},function(arg,data)
 if data.message_ == "User not found" then
 storm_sendMsg(msg.chat_id_, msg.id_, 1,'*📬¦ لا استطيع استخراج معلوماته ✨ *\n', 1, 'md')
 return false  end
-if tonumber(user) == tonumber(legend) then  
+if tonumber(user) == tonumber(lana) then  
 storm_send(chat,msg.id_,"*📮¦ انا بوت لا تستطيع تنزيلي \n👨🏻‍✈️*")   
 return false  end 
 if (da and da.status_.ID == "ChatMemberStatusCreator") then
@@ -64,35 +64,35 @@ end end,nil) end,nil)
 end
 --###########################
 function add_admin(msg,chat,user) --// نتيجه رفع ادمن
-if redis:get(legend.."Add:Pin"..msg.chat_id_) then
+if redis:get(lana.."Add:Pin"..msg.chat_id_) then
 pin_msg = 'true'
 pin = 'ꪜ'
 else
 pin_msg = 'false'
 pin = '✘'
 end
-if redis:get(legend.."Add:Kick"..msg.chat_id_) then
+if redis:get(lana.."Add:Kick"..msg.chat_id_) then
 Add_Kick = 'true'
 kick = 'ꪜ'
 else
 Add_Kick = 'false'
 kick = '✘'
 end
-if redis:get(legend.."Add:Info"..msg.chat_id_) then
+if redis:get(lana.."Add:Info"..msg.chat_id_) then
 Add_Info = 'true'
 info = 'ꪜ'
 else
 Add_Info = 'false'
 info = '✘'
 end
-if redis:get(legend.."Add:Set:Admin"..msg.chat_id_) then
+if redis:get(lana.."Add:Set:Admin"..msg.chat_id_) then
 Add_SetAdmin = 'true'
 adde = 'ꪜ'
 else
 Add_SetAdmin = 'false'
 adde = '✘'
 end
-if redis:get(legend.."Add:Del"..msg.chat_id_) then
+if redis:get(lana.."Add:Del"..msg.chat_id_) then
 Add_Del = 'true'
 del = 'ꪜ'
 else
@@ -280,7 +280,7 @@ if MsgText[1] == 'فحص البوت' then
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-local Chek_Info = https.request('https://api.telegram.org/bot'..Token..'/getChatMember?chat_id='.. msg.chat_id_ ..'&user_id='.. legend..'')
+local Chek_Info = https.request('https://api.telegram.org/bot'..Token..'/getChatMember?chat_id='.. msg.chat_id_ ..'&user_id='.. lana..'')
 local Json_Info = JSON.decode(Chek_Info)
 if Json_Info.ok == true then
 if Json_Info.result.status == "administrator" then
@@ -305,70 +305,70 @@ if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه التثبيت" th
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:set(legend.."Add:Pin"..msg.chat_id_,true)   
+redis:set(lana.."Add:Pin"..msg.chat_id_,true)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه التثبيت')
 end
 if MsgText[1] == "تعطيل" and MsgText[2] == "صلاحيه التثبيت" then 
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:del(legend.."Add:Pin"..msg.chat_id_)   
+redis:del(lana.."Add:Pin"..msg.chat_id_)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تعطيل صلاحيه التثبيت')
 end
 if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه الحذف" then 
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:set(legend.."Add:Del"..msg.chat_id_,true)   
+redis:set(lana.."Add:Del"..msg.chat_id_,true)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه حذف الرسائل')
 end
 if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه الحذف" then 
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:del(legend.."Add:Del"..msg.chat_id_)   
+redis:del(lana.."Add:Del"..msg.chat_id_)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تعطيل صلاحية حذف الرسائل')
 end
 if MsgText[1] == "تعطيل" and MsgText[2] == "صلاحيه الرفع" then 
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:set(legend.."Add:Set:Admin"..msg.chat_id_,true)   
+redis:set(lana.."Add:Set:Admin"..msg.chat_id_,true)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه اضافه مشرفين جدد')
 end
 if MsgText[1] == "تعطيل" and MsgText[2] == "صلاحيه الرفع" then 
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:del(legend.."Add:Set:Admin"..msg.chat_id_)   
+redis:del(lana.."Add:Set:Admin"..msg.chat_id_)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تعطيل صلاحيه اضافة مشرفين جدد')
 end
 if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه المعلومات" then 
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:set(legend.."Add:Info"..msg.chat_id_,true)   
+redis:set(lana.."Add:Info"..msg.chat_id_,true)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه تغير معلومات المجموعه')
 end
 if MsgText[1] == "تعطيل" and MsgText[2] == "صلاحيه المعلومات" then 
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:del(legend.."Add:Info"..msg.chat_id_)   
+redis:del(lana.."Add:Info"..msg.chat_id_)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تعطيل صلاحيه تغير معلومات المجموعه')
 end
 if MsgText[1] == "تفعيل" and MsgText[2] == "صلاحيه الطرد" then 
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:set(legend.."Add:Kick"..msg.chat_id_,true)   
+redis:set(lana.."Add:Kick"..msg.chat_id_,true)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تفعيل صلاحيه طرد المستخدمين')
 end
 if MsgText[1] == "تعطيل" and MsgText[2] == "صلاحيه الطرد" then 
 if not msg.Creator then
 storm_send(msg.chat_id_,msg.id_,"*📮¦ عذرآ لا تستطيع استخدام هاذا الامر \n👨🏻‍✈️*")   
 return false  end 
-redis:del(legend.."Add:Kick"..msg.chat_id_)   
+redis:del(lana.."Add:Kick"..msg.chat_id_)   
 storm_send(msg.chat_id_,msg.id_,'🔰| تم تعطيل صلاحيه طرد المستخدمين')
 end
 
@@ -409,7 +409,7 @@ end
 
 
 return {
-legend = {
+lana = {
 '^(صلاحياته)$',
 '^(تعطيل) (.+)$',
 '^(تفعيل) (.+)$',
@@ -425,7 +425,7 @@ legend = {
 '^(تنزيل مشرف) (%d+)$', 
 
  },
- ilegend = games,
+ ilana = games,
 
 
  }
