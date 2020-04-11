@@ -2550,6 +2550,13 @@ local function setlinkgp(td,mrr619)
 function gps(arg,data)
 
 txt = (redis:get(legend..'welcome:msg'..msg.chat_id_) or '👋┓ اهلآ عزيزي '..(Diamond.first_name_ or '---')..'\n👥┫ المجموعه  '..(data.title_ or '---')..' \n🤫┫ احترام الادمنيه\n😡┫ ممنوع طلب الرتب\n🤐┫ ممنوع السب والكفران \n😒┫ ممنوع التكلم بالطائفيه\n🙏┫ الاعضاء '..mrr619.member_count_..' عضو\n👮‍┫ الادمنيه '..mrr619.administrator_count_..' \n⏱┫ وقت الانضمام :【*'..os.date("%H:%M:%S")..'*】\n📅┛ تاريخ الانضمام :【*'..os.date("%Y/%m/%d")..'*】\n')
+
+txt = welcome:gsub("{القوانين}", redis:get(legend..'rulse:msg'..msg.chat_id_) or "🔖¦ مرحبأ عزيري 👋🏻 القوانين كلاتي 👇🏻\n🔖¦ ممنوع نشر الروابط \n🔖¦ ممنوع التكلم او نشر صور اباحيه \n🔖¦ ممنوع  اعاده توجيه \n🔖¦ ممنوع التكلم بلطائفه \n🔖¦ الرجاء احترام المدراء والادمنيه 😅\n")
+if msg.addusername then UserName = '@'..msg.addusername else UserName = '< لا يوجد معرف >' end
+txt = welcome:gsub("{المجموعه}",Flter_Markdown((redis:get(legend..'group:name'..msg.chat_id_) or '')))
+local txt = welcome:gsub("{المعرف}",UserName)
+local txt = welcome:gsub("{الاسم}",FlterName(msg.addname,20))
+
 sendMsg(msg.chat_id_,msg.id_,txt)
 end
 getChat(msg.chat_id_,gps)
@@ -4058,7 +4065,7 @@ elseif Text== "مح"  then return sendMsg(msg.chat_id_,msg.id_,"محات حيا�
 elseif Text== "شكرا" or Text== "ثكرا" then return  sendMsg(msg.chat_id_,msg.id_,"{ •• الـّ~ـعـفو •• }")
 elseif Text== "انته وين"  then return sendMsg(msg.chat_id_,msg.id_,"بالــبــ🏠ــيــت")
 elseif Text== "😍"  then return sendMsg(msg.chat_id_,msg.id_," واااااو")
-elseif Text== "اكرهك"  then return sendMsg(msg.chat_id_,msg.id_,"ديله شلون اطيق خلقتك اني😾🖖🏿🕷")
+elseif Text== "اكرهك"  then return sendMsg(msg.chat_id_,msg.id_,"ديله شلون اطيق خلقتك اني😾??🏿🕷")
 elseif Text== "اريد اكبل" then return sendMsg(msg.chat_id_,msg.id_,"خخ اني هم اريد اكبل قابل ربي وحد😹??️")
 elseif Text== "ضوجه"  then return sendMsg(msg.chat_id_,msg.id_,"شي اكيد الكبل ماكو 😂 لو بعدك/ج مازاحف/ة 🙊😋")
 elseif Text== "صاك"  then return sendMsg(msg.chat_id_,msg.id_,"زاحفه 😂 منو هذا دزيلي صورهه")
