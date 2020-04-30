@@ -2441,8 +2441,8 @@ end
 
 if MsgText[1] == "سورس" or MsgText[1]=="السورس" then
 return [[
-(t.me/SourceSir)[قناة السورس]
-(t.me/eeeeul)[مطور السورس]
+[قناة السورس](t.me/SourceSir)
+[مطور السورس][t.me/eeeeul]
 ]]
 end
 
