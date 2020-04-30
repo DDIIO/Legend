@@ -33,7 +33,7 @@ function download_to_file(url, file_name)
 
   local file_path = "data/"..file_name
   -- print("Saved to: "..file_path)
-	-- uncomment if needed
+  -- uncomment if needed
   file = io.open(file_path, "w+")
   file:write(table.concat(respbody))
   file:close()
@@ -213,7 +213,7 @@ redis:setex(max..'ExpireDate:'..msg.chat_id_, extime, true)
 if not redis:get(max..'CheckExpire::'..msg.chat_id_) then 
 redis:set(max..'CheckExpire::'..msg.chat_id_,true) end
 sendMsg(msg.chat_id_,msg.id_,'•~تم شحن الاشتراك الى `'..MsgText[2]..'` يوم   ... •~')
-sendMsg(SUDO_ID,0,'• تم شحن الاشتراك الى `'..MsgText[2]..'` يوم   ... •~\n•~ في مجموعه  » »  '..redis:get(max..'group:name'..msg.chat_id_))
+sendMsg(SUDO_ID,0,'•~تم شحن الاشتراك الى `'..MsgText[2]..'` يوم   ... •~\n•~ في مجموعه  » »  '..redis:get(max..'group:name'..msg.chat_id_))
 else
 sendMsg(msg.chat_id_,msg.id_,'•~عزيزي المطور •~\n•~شحن الاشتراك يكون ما بين يوم الى 1000 يوم فقط 🍃')
 end 
@@ -714,74 +714,74 @@ end
 
 if MsgText[1] == "قفل" then
 
-if MsgText[2] == "الكل"		 then return lock_All(msg) end
-if MsgText[2] == "الوسائط" 	 then return lock_Media(msg) end
-if MsgText[2] == "الصور بالتقييد" 	 then return tqeed_photo(msg) end
+if MsgText[2] == "الكل"    then return lock_All(msg) end
+if MsgText[2] == "الوسائط"   then return lock_Media(msg) end
+if MsgText[2] == "الصور بالتقييد"    then return tqeed_photo(msg) end
 if MsgText[2] == "الفيديو بالتقييد"  then return tqeed_video(msg) end
 if MsgText[2] == "المتحركه بالتقييد" then return tqeed_gif(msg) end
 if MsgText[2] == "التوجيه بالتقييد"  then return tqeed_fwd(msg) end
 if MsgText[2] == "الروابط بالتقييد"  then return tqeed_link(msg) end
-if MsgText[2] == "الدردشه"    	     then return mute_text(msg) end
-if MsgText[2] == "المتحركه" 		 then return mute_gif(msg) end
-if MsgText[2] == "الصور" 			 then return mute_photo(msg) end
-if MsgText[2] == "الفيديو"			 then return mute_video(msg) end
-if MsgText[2] == "البصمات" 		then  return mute_audio(msg) end
-if MsgText[2] == "الصوت" 		then return mute_voice(msg) end
-if MsgText[2] == "الملصقات" 	then return mute_sticker(msg) end
-if MsgText[2] == "الجهات" 		then return mute_contact(msg) end
-if MsgText[2] == "التوجيه" 		then return mute_forward(msg) end
-if MsgText[2] == "الموقع"	 	then return mute_location(msg) end
-if MsgText[2] == "الملفات" 		then return mute_document(msg) end
-if MsgText[2] == "الاشعارات" 	then return mute_tgservice(msg) end
-if MsgText[2] == "الانلاين" 		then return mute_inline(msg) end
-if MsgText[2] == "الكيبورد" 	then return mute_keyboard(msg) end
-if MsgText[2] == "الروابط" 		then return lock_link(msg) end
-if MsgText[2] == "التاك" 		then return lock_tag(msg) end
-if MsgText[2] == "المعرفات" 	then return lock_username(msg) end
-if MsgText[2] == "التعديل" 		then return lock_edit(msg) end
-if MsgText[2] == "الكلايش" 		then return lock_spam(msg) end
-if MsgText[2] == "التكرار" 		then return lock_flood(msg) end
-if MsgText[2] == "البوتات" 		then return lock_bots(msg) end
-if MsgText[2] == "البوتات بالطرد" 	then return lock_bots_by_kick(msg) end
-if MsgText[2] == "الماركدوان" 	then return lock_markdown(msg) end
-if MsgText[2] == "الويب" 		then return lock_webpage(msg) end 
-if MsgText[2] == "التثبيت" 		then return lock_pin(msg) end 
+if MsgText[2] == "الدردشه"           then return mute_text(msg) end
+if MsgText[2] == "المتحركه"      then return mute_gif(msg) end
+if MsgText[2] == "الصور"       then return mute_photo(msg) end
+if MsgText[2] == "الفيديو"       then return mute_video(msg) end
+if MsgText[2] == "البصمات"    then  return mute_audio(msg) end
+if MsgText[2] == "الصوت"    then return mute_voice(msg) end
+if MsgText[2] == "الملصقات"   then return mute_sticker(msg) end
+if MsgText[2] == "الجهات"     then return mute_contact(msg) end
+if MsgText[2] == "التوجيه"    then return mute_forward(msg) end
+if MsgText[2] == "الموقع"   then return mute_location(msg) end
+if MsgText[2] == "الملفات"    then return mute_document(msg) end
+if MsgText[2] == "الاشعارات"  then return mute_tgservice(msg) end
+if MsgText[2] == "الانلاين"     then return mute_inline(msg) end
+if MsgText[2] == "الكيبورد"   then return mute_keyboard(msg) end
+if MsgText[2] == "الروابط"    then return lock_link(msg) end
+if MsgText[2] == "التاك"    then return lock_tag(msg) end
+if MsgText[2] == "المعرفات"   then return lock_username(msg) end
+if MsgText[2] == "التعديل"    then return lock_edit(msg) end
+if MsgText[2] == "الكلايش"    then return lock_spam(msg) end
+if MsgText[2] == "التكرار"    then return lock_flood(msg) end
+if MsgText[2] == "البوتات"    then return lock_bots(msg) end
+if MsgText[2] == "البوتات بالطرد"   then return lock_bots_by_kick(msg) end
+if MsgText[2] == "الماركدوان"   then return lock_markdown(msg) end
+if MsgText[2] == "الويب"    then return lock_webpage(msg) end 
+if MsgText[2] == "التثبيت"    then return lock_pin(msg) end 
 end
 
 --{ Commands For Unlocks }
-if MsgText[1] == "فتح" 		then 
+if MsgText[1] == "فتح"    then 
 if MsgText[2] == "الكل" then return Unlock_All(msg) end
 if MsgText[2] == "الوسائط" then return Unlock_Media(msg) end
-if MsgText[2] == "الصور بالتقييد" 		then return fktqeed_photo(msg) 	end
-if MsgText[2] == "الفيديو بالتقييد" 	then return fktqeed_video(msg) 	end
-if MsgText[2] == "المتحركه بالتقييد" 	then return fktqeed_gif(msg) 	end
-if MsgText[2] == "التوجيه بالتقييد" 	then return fktqeed_fwd(msg) 	end
-if MsgText[2] == "الروابط بالتقييد" 	then return fktqeed_link(msg) 	end
-if MsgText[2] == "المتحركه" 	then return unmute_gif(msg) 	end
-if MsgText[2] == "الدردشه" 		then return unmute_text(msg) 	end
-if MsgText[2] == "الصور" 		then return unmute_photo(msg) 	end
-if MsgText[2] == "الفيديو" 		then return unmute_video(msg) 	end
-if MsgText[2] == "البصمات" 		then return unmute_audio(msg) 	end
-if MsgText[2] == "الصوت" 		then return unmute_voice(msg) 	end
-if MsgText[2] == "الملصقات" 	then return unmute_sticker(msg) end
-if MsgText[2] == "الجهات" 		then return unmute_contact(msg) end
-if MsgText[2] == "التوجيه" 		then return unmute_forward(msg) end
-if MsgText[2] == "الموقع" 		then return unmute_location(msg) end
-if MsgText[2] == "الملفات" 		then return unmute_document(msg) end
-if MsgText[2] == "الاشعارات" 	then return unmute_tgservice(msg) end
-if MsgText[2] == "الانلاين" 		then return unmute_inline(msg) 	end
-if MsgText[2] == "الكيبورد" 	then return unmute_keyboard(msg) end
-if MsgText[2] == "الروابط" 		then return unlock_link(msg) 	end
-if MsgText[2] == "التاك" 		then return unlock_tag(msg) 	end
-if MsgText[2] == "المعرفات" 	then return unlock_username(msg) end
-if MsgText[2] == "التعديل" 		then return unlock_edit(msg) 	end
-if MsgText[2] == "الكلايش" 		then return unlock_spam(msg) 	end
-if MsgText[2] == "التكرار" 		then return unlock_flood(msg) 	end
-if MsgText[2] == "البوتات" 		then return unlock_bots(msg) 	end
-if MsgText[2] == "البوتات بالطرد" 	then return unlock_bots_by_kick(msg) end
-if MsgText[2] == "الماركدوان" 	then return unlock_markdown(msg) end
-if MsgText[2] == "الويب" 		then return unlock_webpage(msg) 	end
-if MsgText[2] == "التثبيت" 		then return unlock_pin(msg) end 
+if MsgText[2] == "الصور بالتقييد"     then return fktqeed_photo(msg)  end
+if MsgText[2] == "الفيديو بالتقييد"   then return fktqeed_video(msg)  end
+if MsgText[2] == "المتحركه بالتقييد"  then return fktqeed_gif(msg)  end
+if MsgText[2] == "التوجيه بالتقييد"   then return fktqeed_fwd(msg)  end
+if MsgText[2] == "الروابط بالتقييد"   then return fktqeed_link(msg)   end
+if MsgText[2] == "المتحركه"   then return unmute_gif(msg)   end
+if MsgText[2] == "الدردشه"    then return unmute_text(msg)  end
+if MsgText[2] == "الصور"    then return unmute_photo(msg)   end
+if MsgText[2] == "الفيديو"    then return unmute_video(msg)   end
+if MsgText[2] == "البصمات"    then return unmute_audio(msg)   end
+if MsgText[2] == "الصوت"    then return unmute_voice(msg)   end
+if MsgText[2] == "الملصقات"   then return unmute_sticker(msg) end
+if MsgText[2] == "الجهات"     then return unmute_contact(msg) end
+if MsgText[2] == "التوجيه"    then return unmute_forward(msg) end
+if MsgText[2] == "الموقع"     then return unmute_location(msg) end
+if MsgText[2] == "الملفات"    then return unmute_document(msg) end
+if MsgText[2] == "الاشعارات"  then return unmute_tgservice(msg) end
+if MsgText[2] == "الانلاين"     then return unmute_inline(msg)  end
+if MsgText[2] == "الكيبورد"   then return unmute_keyboard(msg) end
+if MsgText[2] == "الروابط"    then return unlock_link(msg)  end
+if MsgText[2] == "التاك"    then return unlock_tag(msg)   end
+if MsgText[2] == "المعرفات"   then return unlock_username(msg) end
+if MsgText[2] == "التعديل"    then return unlock_edit(msg)  end
+if MsgText[2] == "الكلايش"    then return unlock_spam(msg)  end
+if MsgText[2] == "التكرار"    then return unlock_flood(msg)   end
+if MsgText[2] == "البوتات"    then return unlock_bots(msg)  end
+if MsgText[2] == "البوتات بالطرد"   then return unlock_bots_by_kick(msg) end
+if MsgText[2] == "الماركدوان"   then return unlock_markdown(msg) end
+if MsgText[2] == "الويب"    then return unlock_webpage(msg)   end
+if MsgText[2] == "التثبيت"    then return unlock_pin(msg) end 
 end
  
 if MsgText[1] == "انشاء رابط" then
@@ -1201,56 +1201,55 @@ local NumGha = (redis:get(max..':adduser:'..msg.chat_id_..':'..msg.sender_user_i
 local Namei = FlterName(data.first_name_..' '..(data.last_name_ or ""),20)
 GetPhotoUser(msg.sender_user_id_,function(arg, data)
 if redis:get(max.."getidstatus"..msg.chat_id_) == "Photo" then
-	if data.photos_[0] then 
-		ali = {'شهل صورة😍😌','لا قيمه للقمر امام وجهك🌚🥀','خليني احبك🙈❤️','ببكن خاص 🌚😹','نكبل 🙈♥','منور اليوم 😻','فديت الحلو🌚😹','شهل عسل ،₍🍯😻⁾ ','كلي يا حلو منين الله جابك🙈❤️','يهلا بلعافيه😍','مارتاحلك😐','تحبني؟🙈',
-		}
-		ssssys = ali[math.random(#ali)]
-		if not redis:get("KLISH:ID") then
-		sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,'• USE 𖦹 '..UserNameID..' .\n • MSG 𖥳 '..msgs..' .\n• STA 𖦹 
- '..msg.TheRank..' .\n• iD 𖥳 '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceSir .',dl_cb,nil)
-		else
-		Text = redis:get("KLISH:ID")
-		Text = Text:gsub('IDGET',msg.sender_user_id_)
-		Text = Text:gsub('USERGET',UserNameID)
-		Text = Text:gsub('RTBGET',msg.TheRank)
-		Text = Text:gsub('TFGET',Get_Ttl(msgs))
-		Text = Text:gsub('MSGGET',msgs)
-		Text = Text:gsub('edited',rfih)
-		Text = Text:gsub('adduser',NumGha)
-		Text = Text:gsub('User_Points',nko)
-		sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,"🎇│"..ssssys.."\n"..Text.."",dl_cb,nil)
-		end
-	else
-		if not redis:get("KLISH:ID") then
-		sendMsg(msg.chat_id_,msg.id_,'•~لا يمكنني عرض صورتك لانك قمت بحظر البوت او انك لاتملك صوره في بروفيلك ...!\n• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceSir .')
-		else
-		Text = redis:get("KLISH:ID")
-		Text = Text:gsub('IDGET',msg.sender_user_id_)
-		Text = Text:gsub('USERGET',UserNameID)
-		Text = Text:gsub('RTBGET',msg.TheRank)
-		Text = Text:gsub('TFGET',Get_Ttl(msgs))
-		Text = Text:gsub('MSGGET',msgs)
-		Text = Text:gsub('edited',rfih)
-		Text = Text:gsub('adduser',NumGha)
-		Text = Text:gsub('User_Points',nko)
-		sendMsg(msg.chat_id_,msg.id_,Flter_Markdown(Text))
-		end
-	end
+  if data.photos_[0] then 
+    ali = {'شهل صورة😍😌','لا قيمه للقمر امام وجهك🌚🥀','خليني احبك🙈❤️','ببكن خاص 🌚😹','نكبل 🙈♥','منور اليوم 😻','فديت الحلو🌚😹','شهل عسل ،₍🍯😻⁾ ','كلي يا حلو منين الله جابك🙈❤️','يهلا بلعافيه😍','مارتاحلك😐','تحبني؟🙈',
+    }
+    ssssys = ali[math.random(#ali)]
+    if not redis:get("KLISH:ID") then
+    sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,'• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceAngel .',dl_cb,nil)
+    else
+    Text = redis:get("KLISH:ID")
+    Text = Text:gsub('IDGET',msg.sender_user_id_)
+    Text = Text:gsub('USERGET',UserNameID)
+    Text = Text:gsub('RTBGET',msg.TheRank)
+    Text = Text:gsub('TFGET',Get_Ttl(msgs))
+    Text = Text:gsub('MSGGET',msgs)
+    Text = Text:gsub('edited',rfih)
+    Text = Text:gsub('adduser',NumGha)
+    Text = Text:gsub('User_Points',nko)
+    sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,"🎇│"..ssssys.."\n"..Text.."",dl_cb,nil)
+    end
+  else
+    if not redis:get("KLISH:ID") then
+    sendMsg(msg.chat_id_,msg.id_,'•~لا يمكنني عرض صورتك لانك قمت بحظر البوت او انك لاتملك صوره في بروفيلك ...!\n• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceAngel .')
+    else
+    Text = redis:get("KLISH:ID")
+    Text = Text:gsub('IDGET',msg.sender_user_id_)
+    Text = Text:gsub('USERGET',UserNameID)
+    Text = Text:gsub('RTBGET',msg.TheRank)
+    Text = Text:gsub('TFGET',Get_Ttl(msgs))
+    Text = Text:gsub('MSGGET',msgs)
+    Text = Text:gsub('edited',rfih)
+    Text = Text:gsub('adduser',NumGha)
+    Text = Text:gsub('User_Points',nko)
+    sendMsg(msg.chat_id_,msg.id_,Flter_Markdown(Text))
+    end
+  end
 else
-	if redis:get("KLISH:ID") then
-		Text = redis:get("KLISH:ID")
-		Text = Text:gsub('IDGET',msg.sender_user_id_)
-		Text = Text:gsub('USERGET',UserNameID)
-		Text = Text:gsub('RTBGET',msg.TheRank)
-		Text = Text:gsub('TFGET',Get_Ttl(msgs))
-		Text = Text:gsub('MSGGET',msgs)
-		Text = Text:gsub('edited',rfih)
-		Text = Text:gsub('adduser',NumGha)
-		Text = Text:gsub('User_Points',nko)
-		sendMsg(msg.chat_id_,msg.id_,Flter_Markdown(Text))
-		else
-		sendMsg(msg.chat_id_,msg.id_,'•~الايدي بالصوره معطل \n• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @Sourcesir .')
-		end
+  if redis:get("KLISH:ID") then
+    Text = redis:get("KLISH:ID")
+    Text = Text:gsub('IDGET',msg.sender_user_id_)
+    Text = Text:gsub('USERGET',UserNameID)
+    Text = Text:gsub('RTBGET',msg.TheRank)
+    Text = Text:gsub('TFGET',Get_Ttl(msgs))
+    Text = Text:gsub('MSGGET',msgs)
+    Text = Text:gsub('edited',rfih)
+    Text = Text:gsub('adduser',NumGha)
+    Text = Text:gsub('User_Points',nko)
+    sendMsg(msg.chat_id_,msg.id_,Flter_Markdown(Text))
+    else
+    sendMsg(msg.chat_id_,msg.id_,'•~الايدي بالصوره معطل \n• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceAngel .')
+    end
 end
 
 end) 
@@ -1391,11 +1390,11 @@ end
 
 if MsgText[1] == "تفعيل" then
 
-if MsgText[2] == "الردود" 	then return unlock_replay(msg) end
-if MsgText[2] == "الاذاعه" 	then return unlock_brod(msg) end
-if MsgText[2] == "الايدي" 	then return unlock_ID(msg) end
-if MsgText[2] == "االترحيب" 	then return unlock_Welcome(msg) end
-if MsgText[2] == "التحذير" 	then return unlock_waring(msg) end 
+if MsgText[2] == "الردود"   then return unlock_replay(msg) end
+if MsgText[2] == "الاذاعه"  then return unlock_brod(msg) end
+if MsgText[2] == "الايدي"   then return unlock_ID(msg) end
+if MsgText[2] == "االترحيب"   then return unlock_Welcome(msg) end
+if MsgText[2] == "التحذير"  then return unlock_waring(msg) end 
 end
 
 
@@ -1403,11 +1402,11 @@ end
 
 if MsgText[1] == "تعطيل" then
 
-if MsgText[2] == "الردود" 	then return lock_replay(msg) end
-if MsgText[2] == "الاذاعه" 	then return lock_brod(msg) end
-if MsgText[2] == "الايدي" 	then return lock_ID(msg) end
-if MsgText[2] == "االترحيب" 	then return lock_Welcome(msg) end
-if MsgText[2] == "التحذير" 	then return lock_waring(msg) end
+if MsgText[2] == "الردود"   then return lock_replay(msg) end
+if MsgText[2] == "الاذاعه"  then return lock_brod(msg) end
+if MsgText[2] == "الايدي"   then return lock_ID(msg) end
+if MsgText[2] == "االترحيب"   then return lock_Welcome(msg) end
+if MsgText[2] == "التحذير"  then return lock_waring(msg) end
 end
 
 
@@ -1733,7 +1732,7 @@ redis:setex(max..'fwd:'..msg.sender_user_id_,300, true)
 return "•~حسننا الان ارسل التوجيه للاذاعه \n➿" 
 end
 
-if MsgText[1] == "اذاعه عام" or MsgText[1] == "اذاعه عام " then		
+if MsgText[1] == "اذاعه عام" or MsgText[1] == "اذاعه عام " then   
 if not msg.SudoUser then return"•~**هذا الامر يخص {المطور} فقط  \n❗️" end
 if not msg.SudoBase and not redis:get(max..'lock_brod') then 
 return "•~** الاذاعه مقفوله من قبل المطور الاساسي  ❗️" 
@@ -1742,7 +1741,7 @@ redis:setex(max..'fwd:all'..msg.sender_user_id_,300, true)
 return "•~حسننا الان ارسل الكليشه للاذاعه عام \n➿" 
 end
 
-if MsgText[1] == "اذاعه خاص" or MsgText[1] == "اذاعه خاص " then		
+if MsgText[1] == "اذاعه خاص" or MsgText[1] == "اذاعه خاص " then   
 if not msg.SudoUser then return "•~**هذا الامر يخص {المطور} فقط  \n❗️" end
 if not msg.SudoBase and not redis:get(max..'lock_brod') then 
 return "•~** الاذاعه مقفوله من قبل المطور الاساسي  ❗️" 
@@ -1751,7 +1750,7 @@ redis:setex(max..'fwd:pv'..msg.sender_user_id_,300, true)
 return "•~حسننا الان ارسل الكليشه للاذاعه خاص \n➿"
 end
 
-if MsgText[1] == "اذاعه" or MsgText[1] == "اذاعه " then		
+if MsgText[1] == "اذاعه" or MsgText[1] == "اذاعه " then   
 if not msg.SudoUser then return"•~**هذا الامر يخص {المطور} فقط  \n❗️" end
 if not msg.SudoBase and not redis:get(max..'lock_brod') then 
 return "•~** الاذاعه مقفوله من قبل المطور الاساسي  ❗️" 
@@ -1842,7 +1841,7 @@ end
 
 
 if MsgText[1] == 'اصدار السورس' or MsgText[1] == 'الاصدار' then
-return '•~اصدار سورس سير  : *v'..version..'* \n➿'
+return '•~اصدار سورس انجل  : *v'..version..'* \n➿'
 end
 
 if (MsgText[1] == 'تحديث السورس' or MsgText[1] == 'تحديث السورس ') then
@@ -1912,8 +1911,8 @@ end
 if (MsgText[1]== "ايدي" or MsgText[1]=="ايديي") and msg.type == "pv" then return  "\n•~ اهلن عزيزي المطور ايديك هوه \n\n•~"..msg.sender_user_id_.."\n"  end
 
 if MsgText[1]== "قناة السورس " and msg.type == "pv" then
-local inline = {{{text="•~قنآهہ‏‏ آلسـورس اضـغـط هـنـآ ",url="https://t.me/SourceSir"}}}
-send_key(msg.sender_user_id_,'  [•~قناة سورس : سير](https://t.me/Sourcesir)',nil,inline,msg.id_)
+local inline = {{{text="•~قنآهہ‏‏ آلسـورس اضـغـط هـنـآ ",url="https://t.me/SourceAngel"}}}
+send_key(msg.sender_user_id_,'  [•~قناة سورس : انـجـل](https://t.me/SourceAngel)',nil,inline,msg.id_)
 return false
 end
 
@@ -1931,13 +1930,13 @@ end
 
 if MsgText[1]== 'مسح' and MsgText[2]== 'الردود' then
 if not msg.Director then return "•~**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
-local names 	= redis:exists(max..'replay:'..msg.chat_id_)
-local photo 	= redis:exists(max..'replay_photo:group:'..msg.chat_id_)
-local voice 	= redis:exists(max..'replay_voice:group:'..msg.chat_id_)
+local names   = redis:exists(max..'replay:'..msg.chat_id_)
+local photo   = redis:exists(max..'replay_photo:group:'..msg.chat_id_)
+local voice   = redis:exists(max..'replay_voice:group:'..msg.chat_id_)
 local imation   = redis:exists(max..'replay_animation:group:'..msg.chat_id_)
-local audio	 	= redis:exists(max..'replay_audio:group:'..msg.chat_id_)
-local sticker 	= redis:exists(max..'replay_sticker:group:'..msg.chat_id_)
-local video 	= redis:exists(max..'replay_video:group:'..msg.chat_id_)
+local audio   = redis:exists(max..'replay_audio:group:'..msg.chat_id_)
+local sticker   = redis:exists(max..'replay_sticker:group:'..msg.chat_id_)
+local video   = redis:exists(max..'replay_video:group:'..msg.chat_id_)
 if names or photo or voice or imation or audio or sticker or video then
 redis:del(max..'replay:'..msg.chat_id_,max..'replay_photo:group:'..msg.chat_id_,max..'replay_voice:group:'..msg.chat_id_,
 max..'replay_animation:group:'..msg.chat_id_,max..'replay_audio:group:'..msg.chat_id_,max..'replay_sticker:group:'..msg.chat_id_,max..'replay_video:group:'..msg.chat_id_)
@@ -1949,13 +1948,13 @@ end
 
 if MsgText[1]== 'مسح' and MsgText[2]== 'الردود العامه' then
 if not msg.SudoBase then return"•~للمطورين فقط ! 🃏" end
-local names 	= redis:exists(max..'replay:all')
-local photo 	= redis:exists(max..'replay_photo:group:')
-local voice 	= redis:exists(max..'replay_voice:group:')
-local imation 	= redis:exists(max..'replay_animation:group:')
-local audio 	= redis:exists(max..'replay_audio:group:')
-local sticker 	= redis:exists(max..'replay_sticker:group:')
-local video 	= redis:exists(max..'replay_video:group:')
+local names   = redis:exists(max..'replay:all')
+local photo   = redis:exists(max..'replay_photo:group:')
+local voice   = redis:exists(max..'replay_voice:group:')
+local imation   = redis:exists(max..'replay_animation:group:')
+local audio   = redis:exists(max..'replay_audio:group:')
+local sticker   = redis:exists(max..'replay_sticker:group:')
+local video   = redis:exists(max..'replay_video:group:')
 if names or photo or voice or imation or audio or sticker or video then
 redis:del(max..'replay:all',max..'replay_photo:group:',max..'replay_voice:group:',max..'replay_animation:group:',max..'replay_audio:group:',max..'replay_sticker:group:',max..'replay_video:group:')
 return "✓ تم مسح كل الردود العامه•~ "
@@ -1978,49 +1977,49 @@ end
 
 if MsgText[1]== 'الردود' then
 if not msg.Director then return "•~**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
-local names  	= redis:hkeys(max..'replay:'..msg.chat_id_)
-local photo 	= redis:hkeys(max..'replay_photo:group:'..msg.chat_id_)
-local voice  	= redis:hkeys(max..'replay_voice:group:'..msg.chat_id_)
-local imation 	= redis:hkeys(max..'replay_animation:group:'..msg.chat_id_)
-local audio 	= redis:hkeys(max..'replay_audio:group:'..msg.chat_id_)
-local sticker 	= redis:hkeys(max..'replay_sticker:group:'..msg.chat_id_)
-local video 	= redis:hkeys(max..'replay_video:group:'..msg.chat_id_)
+local names   = redis:hkeys(max..'replay:'..msg.chat_id_)
+local photo   = redis:hkeys(max..'replay_photo:group:'..msg.chat_id_)
+local voice   = redis:hkeys(max..'replay_voice:group:'..msg.chat_id_)
+local imation   = redis:hkeys(max..'replay_animation:group:'..msg.chat_id_)
+local audio   = redis:hkeys(max..'replay_audio:group:'..msg.chat_id_)
+local sticker   = redis:hkeys(max..'replay_sticker:group:'..msg.chat_id_)
+local video   = redis:hkeys(max..'replay_video:group:'..msg.chat_id_)
 if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #video==0 then 
 return '•~**لا يوجد ردود مضافه حاليا \n❗️' 
 end
 local ii = 1
 local message = '•~**ردود البوت في المجموعه  :\n\n'
-for i=1, #photo 	do message = message ..ii..' - *{* '..	photo[i]..' *}_*( •صوره•  ) \n' 	 ii = ii + 1 end
-for i=1, #names 	do message = message ..ii..' - *{* '..	names[i]..' *}_*( •نص•  ) \n'  	 ii = ii + 1 end
-for i=1, #voice 	do message = message ..ii..' - *{* '..  voice[i]..' *}_*( •بصمه• ) \n' 	 ii = ii + 1 end
-for i=1, #imation 	do message = message ..ii..' - *{* '..imation[i]..' *}_*( •متحركه• ) \n' ii = ii + 1 end
-for i=1, #audio 	do message = message ..ii..' - *{* '..	audio[i]..' *}_*( •صوتيه• ) \n'  ii = ii + 1 end
-for i=1, #sticker 	do message = message ..ii..' - *{* '..sticker[i]..' *}_*( •ملصق• ) \n' 	 ii = ii + 1 end
-for i=1, #video 	do message = message ..ii..' - *{* '..	video[i]..' *}_*( •فيديو• ) \n' ii = ii + 1 end
+for i=1, #photo   do message = message ..ii..' - *{* '..  photo[i]..' *}_*( •صوره•  ) \n'    ii = ii + 1 end
+for i=1, #names   do message = message ..ii..' - *{* '..  names[i]..' *}_*( •نص•  ) \n'    ii = ii + 1 end
+for i=1, #voice   do message = message ..ii..' - *{* '..  voice[i]..' *}_*( •بصمه• ) \n'   ii = ii + 1 end
+for i=1, #imation   do message = message ..ii..' - *{* '..imation[i]..' *}_*( •متحركه• ) \n' ii = ii + 1 end
+for i=1, #audio   do message = message ..ii..' - *{* '..  audio[i]..' *}_*( •صوتيه• ) \n'  ii = ii + 1 end
+for i=1, #sticker   do message = message ..ii..' - *{* '..sticker[i]..' *}_*( •ملصق• ) \n'   ii = ii + 1 end
+for i=1, #video   do message = message ..ii..' - *{* '..  video[i]..' *}_*( •فيديو• ) \n' ii = ii + 1 end
 return message..'\n➖➖➖'
 end
 
 if MsgText[1]== 'الردود العامه' or MsgText[1]=='الردود العامه 🗨' then
 if not msg.SudoBase then return "•~للمطور فقط ! 🃏" end
-local names 	= redis:hkeys(max..'replay:all')
-local photo 	= redis:hkeys(max..'replay_photo:group:')
-local voice 	= redis:hkeys(max..'replay_voice:group:')
-local imation 	= redis:hkeys(max..'replay_animation:group:')
-local audio 	= redis:hkeys(max..'replay_audio:group:')
-local sticker 	= redis:hkeys(max..'replay_sticker:group:')
-local video 	= redis:hkeys(max..'replay_video:group:')
+local names   = redis:hkeys(max..'replay:all')
+local photo   = redis:hkeys(max..'replay_photo:group:')
+local voice   = redis:hkeys(max..'replay_voice:group:')
+local imation   = redis:hkeys(max..'replay_animation:group:')
+local audio   = redis:hkeys(max..'replay_audio:group:')
+local sticker   = redis:hkeys(max..'replay_sticker:group:')
+local video   = redis:hkeys(max..'replay_video:group:')
 if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #video==0 then 
 return '•~**لا يوجد ردود مضافه حاليا \n❗️' 
 end
 local ii = 1
 local message = '•~**الردود العامه في البوت :   :\n\n'
-for i=1, #photo 	do message = message ..ii..' - *{* '..	photo[i]..' *}_*( •صوره• ) \n' 	ii = ii + 1 end
-for i=1, #names 	do message = message ..ii..' - *{* '..	names[i]..' *}_*( •نص• ) \n'  	ii = ii + 1 end
-for i=1, #voice 	do message = message ..ii..' - *{* '..	voice[i]..' *}_*( •بصمه• ) \n' 	ii = ii + 1 end
-for i=1, #imation 	do message = message ..ii..' - *{* '..imation[i]..' *}_*( •متحركه• ) \n'ii = ii + 1 end
-for i=1, #audio 	do message = message ..ii..' - *{* '..	audio[i]..' *}_*( •صوتيه• ) \n' ii = ii + 1 end
-for i=1, #sticker 	do message = message ..ii..' - *{* '..sticker[i]..' *}_*( •ملصق• ) \n' 	ii = ii + 1 end
-for i=1, #video 	do message = message ..ii..' - *{* '..	video[i]..' *}_*( •فيديو•  ) \n'ii = ii + 1 end
+for i=1, #photo   do message = message ..ii..' - *{* '..  photo[i]..' *}_*( •صوره• ) \n'  ii = ii + 1 end
+for i=1, #names   do message = message ..ii..' - *{* '..  names[i]..' *}_*( •نص• ) \n'    ii = ii + 1 end
+for i=1, #voice   do message = message ..ii..' - *{* '..  voice[i]..' *}_*( •بصمه• ) \n'  ii = ii + 1 end
+for i=1, #imation   do message = message ..ii..' - *{* '..imation[i]..' *}_*( •متحركه• ) \n'ii = ii + 1 end
+for i=1, #audio   do message = message ..ii..' - *{* '..  audio[i]..' *}_*( •صوتيه• ) \n' ii = ii + 1 end
+for i=1, #sticker   do message = message ..ii..' - *{* '..sticker[i]..' *}_*( •ملصق• ) \n'  ii = ii + 1 end
+for i=1, #video   do message = message ..ii..' - *{* '..  video[i]..' *}_*( •فيديو•  ) \n'ii = ii + 1 end
 return message..'\n➖➖➖'
 end
 
@@ -2442,9 +2441,9 @@ end
 
 if MsgText[1] == "سورس" or MsgText[1]=="السورس" then
 return [[
-سورس سير لحماية المجموعات ، 
+Welcome to Source Angel .
+Source Channel:@SourceAngel
 
-@SourceSir ..
 ]]
 end
 
@@ -2641,7 +2640,7 @@ end
 if Text == 'time' or Text == 'الوقت' and is_JoinChannel(msg) then
 local colors = {'blue','green','yellow','magenta','Orange','DarkOrange','red'}
 local fonts = {'mathbf','mathit','mathfrak','mathrm'}
-local url1 = 'http://latex.codecogs.com/png.download?'..'\\dpi{600}%20\\huge%20\\'..fonts[math.random(#fonts)]..'{{\\color{'..colors[math.random(#colors)]..'}'..os.date("%H:%M")..'}}'	
+local url1 = 'http://latex.codecogs.com/png.download?'..'\\dpi{600}%20\\huge%20\\'..fonts[math.random(#fonts)]..'{{\\color{'..colors[math.random(#colors)]..'}'..os.date("%H:%M")..'}}' 
 file = download_to_file(url1,'time.webp')
 
 print('TIMESSSS')
@@ -2692,7 +2691,7 @@ end
 if msg.text=="/start" then 
 
 if msg.SudoBase then
-local text = '•~  شكراً لك لإستخدام سورس سير .\n•~ انت المطور الاساسي . \n—————————\n\n•~ يمكنك الان التحكم باوامر البوت عن طريق لوحة التحكم  .\n•~ فقط انقر على الامر الذي تريده .‏'
+local text = '•~  شكراً لك لإستخدام سورس انجل .\n•~ انت المطور الاساسي . \n—————————\n\n•~ يمكنك الان التحكم باوامر البوت عن طريق لوحة التحكم  .\n•~ فقط انقر على الامر الذي تريده .‏'
 local keyboard = {
 {"ضع اسم للبوت ","ضع صوره للترحيب "},
  {"تعطيل التواصل ✖️","تفعيل التواصل 🔛"},
@@ -2981,7 +2980,7 @@ local pv = redis:smembers(max..'users')
 local groups = redis:smembers(max..'group:ids')
 local allgp =  #pv + #groups
 if allgp >= 300 then
-sendMsg(msg.chat_id_,msg.id_,'•~اهلا عزيزي المطور \n•~جاري نشر التوجيه للمجموعات وللمشتركين ...')			
+sendMsg(msg.chat_id_,msg.id_,'•~اهلا عزيزي المطور \n•~جاري نشر التوجيه للمجموعات وللمشتركين ...')     
 end
 for i = 1, #pv do 
 sendMsg(pv[i],0,Flter_Markdown(msg.text),nil,function(arg,data)
@@ -3010,7 +3009,7 @@ if redis:get(max..'fwd:pv'..msg.sender_user_id_) then ---- استقبال رسا
 redis:del(max..'fwd:pv'..msg.sender_user_id_)
 local pv = redis:smembers(max..'users')
 if #pv >= 300 then
-sendMsg(msg.chat_id_,msg.id_,'•~اهلا عزيزي المطور \n•~جاري نشر الرساله للمشتركين ...')			
+sendMsg(msg.chat_id_,msg.id_,'•~اهلا عزيزي المطور \n•~جاري نشر الرساله للمشتركين ...')      
 end
 local NumPvDel = 0
 for i = 1, #pv do
@@ -3034,7 +3033,7 @@ if redis:get(max..'fwd:groups'..msg.sender_user_id_) then ---- استقبال ر
 redis:del(max..'fwd:groups'..msg.sender_user_id_)
 local groups = redis:smembers(max..'group:ids')
 if #groups >= 300 then
-sendMsg(msg.chat_id_,msg.id_,'•~اهلا عزيزي المطور \n•~جاري نشر الرساله للمجموعات ...')			
+sendMsg(msg.chat_id_,msg.id_,'•~اهلا عزيزي المطور \n•~جاري نشر الرساله للمجموعات ...')      
 end
 local NumGroupsDel = 0
 for i = 1, #groups do 
@@ -3076,7 +3075,7 @@ local pv = redis:smembers(max..'users')
 local groups = redis:smembers(max..'group:ids')
 local allgp =  #pv + #groups
 if allgp == 500 then
-sendMsg(msg.chat_id_,msg.id_,'•~اهلا عزيزي المطور \n•~جاري نشر التوجيه للمجموعات وللمشتركين ...')			
+sendMsg(msg.chat_id_,msg.id_,'•~اهلا عزيزي المطور \n•~جاري نشر التوجيه للمجموعات وللمشتركين ...')     
 end
 local number = 0
 for i = 1, #pv do 
@@ -3085,12 +3084,19 @@ end
 for i = 1, #groups do 
 fwdMsg(groups[i],msg.chat_id_,msg.id_,dl_cb,nil)
 end
-return sendMsg(msg.chat_id_,msg.id_,'•~**تم اذاعه التوجيه بنجاح ➿\n•~**للمـجمـوعآت » ❴ *'..#groups..'* ❵\n•~**للخآص » ❴ '..#pv..' ❵\n✓')			
+return sendMsg(msg.chat_id_,msg.id_,'•~**تم اذاعه التوجيه بنجاح ➿\n•~**للمـجمـوعآت » ❴ *'..#groups..'* ❵\n•~**للخآص » ❴ '..#pv..' ❵\n✓')      
 end
 
  
 
-
+if msg.text and msg.type == "channel" then
+if msg.text:match("^"..Bot_Name.." غادر$") and (msg.SudoBase or msg.SudoBase or msg.Director) then
+sendMsg(msg.chat_id_,msg.id_,'•~من زينكم يا هطوف .🃏')
+rem_data_group(msg.chat_id_)
+StatusLeft(msg.chat_id_,our_id)
+return false
+end
+end
 
 if msg.content_.ID == "MessagePhoto" and redis:get(max..'welcom_ph:witting'..msg.sender_user_id_) then
 redis:del(max..'welcom_ph:witting'..msg.sender_user_id_)
@@ -3140,13 +3146,13 @@ end
 
 if redis:get(max..'delrd:'..msg.sender_user_id_) then
 redis:del(max..'delrd:'..msg.sender_user_id_)
-local names 	= redis:hget(max..'replay:'..msg.chat_id_,msg.text)
-local photo 	= redis:hget(max..'replay_photo:group:'..msg.chat_id_,msg.text)
-local voice 	= redis:hget(max..'replay_voice:group:'..msg.chat_id_,msg.text)
+local names   = redis:hget(max..'replay:'..msg.chat_id_,msg.text)
+local photo   = redis:hget(max..'replay_photo:group:'..msg.chat_id_,msg.text)
+local voice   = redis:hget(max..'replay_voice:group:'..msg.chat_id_,msg.text)
 local animation = redis:hget(max..'replay_animation:group:'..msg.chat_id_,msg.text)
-local audio 	= redis:hget(max..'replay_audio:group:'..msg.chat_id_,msg.text)
-local sticker 	= redis:hget(max..'replay_sticker:group:'..msg.chat_id_,msg.text)
-local video 	= redis:hget(max..'replay_video:group:'..msg.chat_id_,msg.text)
+local audio   = redis:hget(max..'replay_audio:group:'..msg.chat_id_,msg.text)
+local sticker   = redis:hget(max..'replay_sticker:group:'..msg.chat_id_,msg.text)
+local video   = redis:hget(max..'replay_video:group:'..msg.chat_id_,msg.text)
 if not (names or photo or voice or animation or audio or sticker or video) then
 return sendMsg(msg.chat_id_,msg.id_,'•~**هذا الرد ليس مضاف في قائمه الردود ➰')
 else
@@ -3897,7 +3903,7 @@ local dr = {
 "يستر عليك .",
 }
 local nnn = {
-"اسمي ["..Bot_Name.."] وحلم حياتي اتوطى في بطنك اذا قلت بوت مره ثانيه .",
+"اسمي ["..Bot_Name.."] .",
 "لبييه .",
 "عيوني لك .",
 "تدلل .",
