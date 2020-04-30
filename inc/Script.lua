@@ -1206,7 +1206,7 @@ if redis:get(max.."getidstatus"..msg.chat_id_) == "Photo" then
     }
     ssssys = ali[math.random(#ali)]
     if not redis:get("KLISH:ID") then
-    sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,'• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceAngel .',dl_cb,nil)
+    sendPhoto(msg.chat_id_,msg.id_,data.photos_[0].sizes_[1].photo_.persistent_id_,'• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceSir .',dl_cb,nil)
     else
     Text = redis:get("KLISH:ID")
     Text = Text:gsub('IDGET',msg.sender_user_id_)
@@ -1221,7 +1221,7 @@ if redis:get(max.."getidstatus"..msg.chat_id_) == "Photo" then
     end
   else
     if not redis:get("KLISH:ID") then
-    sendMsg(msg.chat_id_,msg.id_,'-لا يمكنني عرض صورتك لانك قمت بحظر البوت او انك لاتملك صوره في بروفيلك ...!\n• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceAngel .')
+    sendMsg(msg.chat_id_,msg.id_,'-لا يمكنني عرض صورتك لانك قمت بحظر البوت او انك لاتملك صوره في بروفيلك ...!\n• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceSir .')
     else
     Text = redis:get("KLISH:ID")
     Text = Text:gsub('IDGET',msg.sender_user_id_)
@@ -1248,7 +1248,7 @@ else
     Text = Text:gsub('User_Points',nko)
     sendMsg(msg.chat_id_,msg.id_,Flter_Markdown(Text))
     else
-    sendMsg(msg.chat_id_,msg.id_,'-الايدي بالصوره معطل \n• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceAngel .')
+    sendMsg(msg.chat_id_,msg.id_,'-الايدي بالصوره معطل \n• USE ➤ '..UserNameID..' .\n• MSG ➤ '..msgs..' .\n• STA ➤ '..msg.TheRank..' .\n• iD ➤ '..msg.sender_user_id_..' .\n• 𝗖𝗵𝗮 ➤ @SourceSir .')
     end
 end
 
@@ -1841,7 +1841,7 @@ end
 
 
 if MsgText[1] == 'اصدار السورس' or MsgText[1] == 'الاصدار' then
-return '-اصدار سورس انجل  : *v'..version..'* \n➿'
+return '-اصدار سورس سير  : *v'..version..'* \n➿'
 end
 
 if (MsgText[1] == 'تحديث السورس' or MsgText[1] == 'تحديث السورس ') then
@@ -1888,7 +1888,7 @@ else
 sendMsg(msg.chat_id_,msg.id_,"-** عذرا النسخه الاحتياطيه هذا ليست للبوت » ["..Bot_User.."]  \n❗️")
 end
 else 
-sendMsg(msg.chat_id_,msg.id_,'-** عذرا اسم الملف غير مدعوم للنظام او لا يتوافق مع سورس انجل يرجى جلب الملف الاصلي الذي قمت بسحبه وبدون تعديل ع الاسم\n❗️')
+sendMsg(msg.chat_id_,msg.id_,'-** عذرا اسم الملف غير مدعوم للنظام او لا يتوافق مع سورس سير يرجى جلب الملف الاصلي الذي قمت بسحبه وبدون تعديل ع الاسم\n❗️')
 end  
 else
 sendMsg(msg.chat_id_,msg.id_,'-** عذرا الملف ليس بصيغه Json !?\n❗️')
@@ -1911,8 +1911,8 @@ end
 if (MsgText[1]== "ايدي" or MsgText[1]=="ايديي") and msg.type == "pv" then return  "\n- اهلن عزيزي المطور ايديك هوه \n\n-"..msg.sender_user_id_.."\n"  end
 
 if MsgText[1]== "قناة السورس " and msg.type == "pv" then
-local inline = {{{text="-قنآهہ‏‏ آلسـورس اضـغـط هـنـآ ",url="https://t.me/SourceAngel"}}}
-send_key(msg.sender_user_id_,'  [-قناة سورس : انـجـل](https://t.me/SourceAngel)',nil,inline,msg.id_)
+local inline = {{{text="-قنآهہ‏‏ آلسـورس اضـغـط هـنـآ ",url="https://t.me/SourceSir"}}}
+send_key(msg.sender_user_id_,'  [-قناة سورس : انـجـل](https://t.me/SourceSir)',nil,inline,msg.id_)
 return false
 end
 
@@ -2441,9 +2441,8 @@ end
 
 if MsgText[1] == "سورس" or MsgText[1]=="السورس" then
 return [[
-Welcome to Source Angel .
-Source Channel:@SourceAngel
-
+(t.me/SourceSir)[قناة السورس]
+(t.me/eeeeul)[مطور السورس]
 ]]
 end
 
@@ -2691,7 +2690,7 @@ end
 if msg.text=="/start" then 
 
 if msg.SudoBase then
-local text = '-  شكراً لك لإستخدام سورس انجل .\n- انت المطور الاساسي . \n—————————\n\n- يمكنك الان التحكم باوامر البوت عن طريق لوحة التحكم  .\n- فقط انقر على الامر الذي تريده .‏'
+local text = '-  شكراً لك لإستخدام سورس سير .\n- انت المطور الاساسي . \n—————————\n\n- يمكنك الان التحكم باوامر البوت عن طريق لوحة التحكم  .\n- فقط انقر على الامر الذي تريده .‏'
 local keyboard = {
 {"ضع اسم للبوت ","ضع صوره للترحيب "},
  {"تعطيل التواصل ✖️","تفعيل التواصل 🔛"},
