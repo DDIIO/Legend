@@ -97,40 +97,40 @@ function download_to_file(url, file_name)
   
   function lock_photos(msg)
   if not msg.Director then 
-  return "-** هذا الامر يخص {المدير,المنشئ,المطور} فقط  \n❗️"
+  return "-** هذا الامر يخص {المدير,المنشئ,المطور} فقط  ."
   end
   redis:set(max.."getidstatus"..msg.chat_id_, "Simple")
   return  "-** أهلا عزيزي "..msg.TheRankCmd.."\n-** تم تعطيل الايدي بالصوره  \n✓" 
   end 
   function unlock_photos(msg)
   if not msg.Director then
-  return "-** هذا الامر يخص {المدير,المنشئ,المطور} فقط  \n❗️"
+  return "-** هذا الامر يخص {المدير,المنشئ,المطور} فقط  ."
   end
   redis:set(max.."getidstatus"..msg.chat_id_, "Photo")
   return  "-** أهلا عزيزي "..msg.TheRankCmd.."\n-** تم تفعيل الايدي بالصوره \n✓" 
   end
   function cmds_on(msg)
-  if not msg.Creator then return "-** هذا الامر يخص {المنشئ,المطور} فقط  \n❗️"
+  if not msg.Creator then return "-** هذا الامر يخص {المنشئ,المطور} فقط  ."
   end
   redis:set(max..'lock:kara:'..msg.chat_id_,'on')
   return "-** أهلا عزيزي "..msg.TheRankCmd.."\n-** تم تعطيل الرفع في المجموعه \n✓"
   end
   function cmds_off(msg)
-  if not msg.Creator then return "-** هذا الامر يخص {المنشئ,المطور} فقط  \n❗️"
+  if not msg.Creator then return "-** هذا الامر يخص {المنشئ,المطور} فقط  ."
   end
   redis:set(max..'lock:kara:'..msg.chat_id_,'off')
   return "-** أهلا عزيزي "..msg.TheRankCmd.."\n-** تم تفعيل الرفع في المجموعه \n✓"
   end
   
   function lockjoin(msg)
-  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️"
+  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ."
   end
   redis:set(max..'lock:join:'..msg.chat_id_,true)
   return "*-** أهلا عزيزي *"..msg.TheRankCmd.."*\n-** تم قفل الدخول بالرابط \n✓*" 
   
   end
   function unlockjoin(msg)
-  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️"
+  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ."
   end
   redis:del(max..'lock:join:'..msg.chat_id_)
   return "*-** أهلا عزيزي *"..msg.TheRankCmd.."*\n-** تم فتح الدخول بالرابط \n✓*" 
@@ -206,7 +206,7 @@ function download_to_file(url, file_name)
   if msg.type ~= 'pv' and msg.GroupActive then 
   
   if MsgText[1] == 'شحن' and MsgText[2] then
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  ." end
   if tonumber(MsgText[2]) > 0 and tonumber(MsgText[2]) < 1001 then
   local extime = (tonumber(MsgText[2]) * 86400)
   redis:setex(max..'ExpireDate:'..msg.chat_id_, extime, true)
@@ -221,7 +221,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == 'الاشتراك' and MsgText[2] then 
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  ." end
   if MsgText[2] == '1' then
   redis:setex(max..'ExpireDate:'..msg.chat_id_, 2592000, true)
   if not redis:get(max..'CheckExpire::'..msg.chat_id_) then 
@@ -250,7 +250,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == 'الاشتراك' and not MsgText[2] and msg.Admin then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local check_time = redis:ttl(max..'ExpireDate:'..msg.chat_id_)
   if check_time < 0 then return '*مـفـتـوح *-\n✓' end
   year = math.floor(check_time / 31536000)
@@ -280,7 +280,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "المجموعه" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   GetFullChat(msg.chat_id_,function(arg,data)
   local GroupName = (redis:get(max..'group:name'..msg.chat_id_) or '')
   redis:set(max..'linkGroup'..msg.chat_id_,(data.invite_link_ or ""))
@@ -307,42 +307,42 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "منع" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return AddFilter(msg, MsgText[2]) 
   end
   
   if MsgText[1] == "الغاء منع" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return RemFilter(msg, MsgText[2]) 
   end
   
   if MsgText[1] == "قائمه المنع" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return FilterXList(msg) 
   end
   
   if MsgText[1] == "الحمايه" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return settingsall(msg) 
   end
   
   if MsgText[1] == "الاعدادات" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return settings(msg) 
   end
   
   if MsgText[1] == "الوسائط" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return media(msg) 
   end
   
   if MsgText[1] == "الادمنيه" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return GetListAdmin(msg) 
   end
   
   if MsgText[1] == "تاك" then
-  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = 100
   },function(ta,taha)
   local t = "\n- قائمة الاعضاء \n———————\n"
@@ -358,38 +358,38 @@ function download_to_file(url, file_name)
   end
   
   if (MsgText[1] == "تاك للحلوين" and is_JoinChannel(msg)) then 
-  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return ownerlist(msg) .. GetListAdmin(msg) .. whitelist(msg)
   end
   
   if MsgText[1] == "تاك للكل" then 
-  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-** هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return ownerlist(msg) .. GetListAdmin(msg) .. whitelist(msg)
   end
   
   if MsgText[1] == "المنشى الاساسي" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return MONSEBOT(msg) 
   end
   
   if MsgText[1] == "المدراء" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return ownerlist(msg) 
   end
   
   if MsgText[1] == "المنشئ الاساسي" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return Hussainlist(msg) 
   end
   
   if MsgText[1] == "المميزين" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return whitelist(msg) 
   end
   
   
   if MsgText[1] == "صلاحياته" then 
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   if tonumber(msg.reply_to_message_id_) ~= 0 then 
   function prom_reply(extra, result, success) 
   Get_Info(msg,msg.chat_id_,result.sender_user_id_)
@@ -403,12 +403,12 @@ function download_to_file(url, file_name)
   end  
   end
   if MsgText[1] == "صلاحياته" and MsgText[2] and MsgText[2]:match('@[%a%d_]+') then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   if tonumber(msg.reply_to_message_id_) == 0 then 
   local username = MsgText[2]
   function prom_username(extra, result, success) 
   if (result and result.code_ == 400 or result and result.message_ == "USERNAME_NOT_OCCUPIED") then
-  return sendMsg(msg.chat_id_,msg.id_,'- المعرف غير صحيح \n❗️')   
+  return sendMsg(msg.chat_id_,msg.id_,'- المعرف غير صحيح .')   
   end   
   if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
   return sendMsg(msg.chat_id_,msg.id_,'-هاذا معرف قناة \n')   
@@ -419,7 +419,7 @@ function download_to_file(url, file_name)
   end 
   end
   if MsgText[1] == "فحص البوت" then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   local Chek_Info = https.request('https://api.telegram.org/bot'..Token..'/getChatMember?chat_id='.. msg.chat_id_ ..'&user_id='.. max..'')
   local Json_Info = JSON.decode(Chek_Info)
   if Json_Info.ok == true then
@@ -442,7 +442,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "تثبيت" and msg.reply_id then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local GroupID = msg.chat_id_:gsub('-100','')
   if not msg.Director and redis:get(max..'lock_pin'..msg.chat_id_) then
   return "لا يمكنك التثبيت الامر مقفول من قبل الاداره"
@@ -465,7 +465,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "الغاء التثبيت" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not msg.Director and redis:get(max..'lock_pin'..msg.chat_id_) then
   return "لا يمكنك الغاء التثبيت الامر مقفول من قبل الاداره"
   else
@@ -486,7 +486,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "تقييد" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="tqeed"}) 
   end
@@ -500,7 +500,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "فك التقييد" or MsgText[1] == "فك تقييد" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="fktqeed"}) 
   end
@@ -515,7 +515,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "رفع مميز" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not MsgText[2] and msg.reply_id then
   if redis:get(max..'lock:kara:'..msg.chat_id_) == 'off' then
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="setwhitelist"})
@@ -539,7 +539,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "تنزيل مميز" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not MsgText[2] and msg.reply_id then
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="remwhitelist"})
   end
@@ -554,7 +554,7 @@ function download_to_file(url, file_name)
   
   
   if (MsgText[1] == "رفع المدير"  or MsgText[1] == "رفع مدير" ) then
-  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   if not MsgText[2] and msg.reply_id then
   if redis:get(max..'lock:kara:'..msg.chat_id_) == 'off' then
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="setowner"})
@@ -578,7 +578,7 @@ function download_to_file(url, file_name)
   
   
   if (MsgText[1] == "تنزيل المدير" or MsgText[1] == "تنزيل مدير" ) then
-  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   if not MsgText[2] and msg.reply_id then
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="remowner"})
   end
@@ -593,7 +593,7 @@ function download_to_file(url, file_name)
   
   
   if (MsgText[1] == "رفع منشى اساسي" or MsgText[1] == "رفع منشئ اساسي") then
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور,المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور,المطور الاساسي} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="setkara"}) 
   return false
@@ -609,7 +609,7 @@ function download_to_file(url, file_name)
   end
   
   if (MsgText[1] == "تنزيل منشى اساسي" or MsgText[1] == "تنزيل منشى اساسي") then
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور,المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور,المطور الاساسي} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="remkara"}) 
   return false
@@ -626,7 +626,7 @@ function download_to_file(url, file_name)
   
   
   if (MsgText[1] == "رفع منشى" or MsgText[1] == "رفع منشئ") then
-  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  \n❗️" end
+  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  ." end
   if not MsgText[2] and msg.reply_id then
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="setmnsha"})
   end
@@ -641,7 +641,7 @@ function download_to_file(url, file_name)
   
   
   if (MsgText[1] == "تنزيل منشى" or MsgText[1] == "تنزيل منشئ" ) then
-  if not msg.Kara then return "-**هذا الامر يخص {المطور,المنشى الاساسي فقط} فقط  \n❗️" end
+  if not msg.Kara then return "-**هذا الامر يخص {المطور,المنشى الاساسي فقط} فقط  ." end
   if not MsgText[2] and msg.reply_id then
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="remmnsha"})
   end
@@ -656,7 +656,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "رفع ادمن" then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   if not MsgText[2] and msg.reply_id then
   if redis:get(max..'lock:kara:'..msg.chat_id_) == 'off' then
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="promote"})
@@ -681,7 +681,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "تنزيل ادمن" then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   if not MsgText[2] and msg.reply_id then
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="demote"})
   end
@@ -697,7 +697,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "تنزيل الكل" then
-  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   
   local Admins = redis:scard(max..'admins:'..msg.chat_id_)
   redis:del(max..'admins:'..msg.chat_id_)
@@ -785,7 +785,7 @@ function download_to_file(url, file_name)
   end
    
   if MsgText[1] == "انشاء رابط" then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   if not redis:get(max..'ExCmdLink'..msg.chat_id_) then
   local LinkGp = ExportLink(msg.chat_id_)
   if LinkGp then
@@ -803,7 +803,7 @@ function download_to_file(url, file_name)
   end 
   
   if MsgText[1] == "ضع رابط" then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   redis:setex(max..'linkGroup'..msg.sender_user_id_,300,true)
   return '-عزيزي قم برسال الرابط الجديد ...🃏'
   end
@@ -819,7 +819,7 @@ function download_to_file(url, file_name)
     
   
   if MsgText[1] == "الرابط خاص" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local GroupLink = redis:get(max..'linkGroup'..msg.chat_id_)
   if not GroupLink then return "-** اوه  لا يوجد هنا رابط\n-*رجائا اكتب [ضع رابط]*" end
   local Text = "- رابـط الـمـجـمـوعه \n- "..Flter_Markdown(redis:get(max..'group:name'..msg.chat_id_)).." :\n\n["..GroupLink.."]\n"
@@ -836,7 +836,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "ضع القوانين" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   redis:setex(max..'rulse:witting'..msg.sender_user_id_,300,true)
   return '-حسنا عزيزي  \n-الان ارسل القوانين  للمجموعه '
   end
@@ -851,7 +851,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "ضع تكرار" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local NumLoop = tonumber(MsgText[2])
   if NumLoop < 1 or NumLoop > 50 then 
   return "-** حدود التكرار ,  يجب ان تكون ما بين  *[2-50]*" 
@@ -864,14 +864,14 @@ function download_to_file(url, file_name)
   
   if MsgText[1] == "مسح" then
   if not MsgText[2] and msg.reply_id then 
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   Del_msg(msg.chat_id_, msg.reply_id) 
   Del_msg(msg.chat_id_, msg.id_) 
   return false
   end
   
   if MsgText[2] and MsgText[2]:match('^%d+$') then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   if 500 < tonumber(MsgText[2]) then return "-** حدود المسح ,  يجب ان تكون ما بين  *[2-100]*" end
   local DelMsg = MsgText[2] + 1
   GetHistory(msg.chat_id_,DelMsg,function(arg,data)
@@ -899,7 +899,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[2] == "الادمنيه" then 
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   
   local Admins = redis:scard(max..'admins:'..msg.chat_id_)
   if Admins ==0 then  
@@ -911,7 +911,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[2] == "قائمه المنع" then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   local Mn3Word = redis:scard(max..':Filter_Word:'..msg.chat_id_)
   if Mn3Word == 0 then 
   return "-** عذرا لا توجد كلمات ممنوعه ليتم حذفها ✓" 
@@ -922,7 +922,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[2] == "القوانين" then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   if not redis:get(max..'rulse:msg'..msg.chat_id_) then 
   return "-عذرا لا يوجد قوانين ليتم مسحه \n!" 
   end
@@ -932,7 +932,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[2] == "الترحيب"  then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   if not redis:get(max..'welcome:msg'..msg.chat_id_) then 
   return "-** اوه هنالك خطأ\n- عذرا لا يوجد ترحيب ليتم مسحه ✓" 
   end
@@ -942,7 +942,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[2] == "المنشى الاساسي" then
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  ." end
   local NumMnsha = redis:scard(max..':Hussain:'..msg.chat_id_)
   if NumMnsha ==0 then 
   return "-عذرا لا يوجد منشى اساسي \n!" 
@@ -953,7 +953,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[2] == "المنشئيين" then
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  ." end
   local NumMnsha = redis:scard(max..':MONSHA_BOT:'..msg.chat_id_)
   if NumMnsha ==0 then 
   return "-عذرا لا يوجد منشئيين ليتم مسحهم \n!" 
@@ -964,7 +964,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[2] == "المدراء" then
-  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   local NumMDER = redis:scard(max..'owners:'..msg.chat_id_)
   if NumMDER ==0 then 
   return "-عذرا لا يوجد مدراء ليتم مسحهم \n!" 
@@ -974,7 +974,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[2] == 'المحظورين' then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   
   local list = redis:smembers(max..'banned:'..msg.chat_id_)
   if #list == 0 then return "*-لا يوجد مستخدمين محظورين  *" end
@@ -987,7 +987,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[2] == 'المكتومين' then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   local MKTOMEN = redis:scard(max..'is_silent_users:'..msg.chat_id_)
   if MKTOMEN ==0 then 
   return "-** لا يوجد مستخدمين مكتومين في المجموعه " 
@@ -997,7 +997,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[2] == 'المميزين' then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   local MMEZEN = redis:scard(max..'whitelist:'..msg.chat_id_)
   if MMEZEN ==0 then 
   return "*-*لا يوجد مستخدمين مميزين في المجموعه " 
@@ -1008,7 +1008,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[2] == 'الرابط' then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   if not redis:get(max..'linkGroup'..msg.chat_id_) then 
   return "*-*لا يوجد رابط مضاف اصلا " 
   end
@@ -1022,7 +1022,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "ضع اسم" then
-  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   redis:setex(max..'name:witting'..msg.sender_user_id_,300,true)
   return "-حسننا عزيزي \n-الان ارسل الاسم  للمجموعه \n"
   end
@@ -1036,7 +1036,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "ضع صوره" then
-  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   if msg.reply_id then
   GetMsgInfo(msg.chat_id_,msg.reply_id,function(arg, data)
   if data.content_.ID == 'MessagePhoto' then
@@ -1065,14 +1065,14 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "ضع وصف" then 
-  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   redis:setex(max..'about:witting'..msg.sender_user_id_,300,true) 
   return "-حسننا عزيزي  \n-الان ارسل الوصف  للمجموعه\n" 
   end
   
   
   if MsgText[1] == "طرد البوتات" then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   tdcli_function({ID="GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''),
   filter_ ={ID="ChannelMembersBots"},offset_ = 0,limit_ = 50},function(arg,data)
   local Total = data.total_count_ or 0
@@ -1115,7 +1115,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "كشف البوتات" then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   tdcli_function({ID="GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''),
   filter_ ={ID= "ChannelMembersBots"},offset_ = 0,limit_ = 50},function(arg,data)
   local total = data.total_count_ or 0
@@ -1148,7 +1148,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == 'طرد المحذوفين' then
-  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   sendMsg(msg.chat_id_,msg.id_,'- جاري البحث عـن الـحـسـابـات المـحذوفـة ...')
   tdcli_function({ID="GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100','')
   ,offset_ = 0,limit_ = 200},function(arg,data)
@@ -1411,14 +1411,14 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "ضع الترحيب" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   redis:set(max..'welcom:witting'..msg.sender_user_id_,true) 
   return "-حسننا عزيزي  🃏\n- ارسل كليشه الترحيب الان\n\n-ملاحظه تستطيع اضافه دوال للترحيب مثلا :\n-اظهار قوانين المجموعه  » *{القوانين}*  \n- اظهار الاسم العضو » *{الاسم}*\n-اظهار المعرف العضو » *{المعرف}*\n-اظهار اسم المجموعه » *{المجموعه}*" 
   end
   
   
   if MsgText[1] == "الترحيب" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if redis:get(max..'welcome:msg'..msg.chat_id_)  then
   return Flter_Markdown(redis:get(max..'welcome:msg'..msg.chat_id_))
   else 
@@ -1444,7 +1444,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "طرد" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="kick"})  
   return false
@@ -1461,7 +1461,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "حظر" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="ban"}) 
   return false
@@ -1478,7 +1478,7 @@ function download_to_file(url, file_name)
   
   
   if (MsgText[1] == "الغاء الحظر" or MsgText[1] == "الغاء حظر") and msg.Admin then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="unban"}) 
   return false
@@ -1495,7 +1495,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "كتم" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="silent"}) 
   return false
@@ -1512,7 +1512,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == "الغاء الكتم" or MsgText[1] == "الغاء كتم" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="unsilent"}) 
   return false
@@ -1528,17 +1528,17 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "المكتومين" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return MuteUser_list(msg) 
   end
   
   if MsgText[1] == "المحظورين" then 
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return GetListBanned(msg) 
   end
   
   if MsgText[1] == "رفع الادمنيه" then
-  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  \n❗️" end
+  if not msg.Creator then return "-**هذا الامر يخص {المطور,المنشئ} فقط  ." end
   return set_admins(msg) 
   end
   
@@ -1546,7 +1546,7 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1] == 'مسح' and MsgText[2] == 'المطورين'  then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   local mtwren = redis:scard(max..':SUDO_BOT:')
   if mtwren == 0 then  return "-** عذرا لا يوجد مطورين في البوت  " end
   redis:del(max..':SUDO_BOT:') 
@@ -1554,7 +1554,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == 'مسح' and MsgText[2] == "قائمه العام"  then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   local addbannds = redis:scard(max..'gban_users')
   if addbannds ==0 then 
   return "*-قائمة الحظر العام فارغه .*" 
@@ -1566,7 +1566,7 @@ function download_to_file(url, file_name)
   if msg.SudoBase then
   
   if MsgText[1] == "رفع مطور" then
-  if not msg.SudoBase then return "-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return "-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="up_sudo"}) 
   return false
@@ -1692,22 +1692,22 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == 'المجموعات' or MsgText[1] == "المجموعات " then
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  ." end
   return '-** عدد المجموعات المفعلة » `'..redis:scard(max..'group:ids')..'`  ➼' 
   end
   
   if MsgText[1] == "المشتركين" or MsgText[1] == "المشتركين " then
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  ." end
   return '-**عدد المشتركين في البوت : `'..redis:scard(max..'users')..'` \n'
   end
   
   if MsgText[1] == 'قائمه المجموعات' then 
-  if not msg.SudoBase then return "-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoBase then return "-**هذا الامر يخص {المطور} فقط  ." end
   return chat_list(msg) 
   end
   
   if MsgText[1] == 'تعطيل' and MsgText[2] and MsgText[2]:match("-100(%d+)") then
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  ." end
   if redis:sismember(max..'group:ids',MsgText[2]) then
   local name_gp = redis:get(max..'group:name'..MsgText[2])
   sendMsg(MsgText[2],0,'-** تم تعطيل المجموعه بأمر من المطور  \n-** سوف اغادر  ...\n✘')
@@ -1724,7 +1724,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "اذاعه عام بالتوجيه" or MsgText[1] == "اذاعه عام بالتوجيه " then
-  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  ." end
   if not msg.SudoBase and not redis:get(max..'lock_brod') then 
   return "-** الاذاعه مقفوله من قبل المطور الاساسي  ❗️" 
   end
@@ -1733,7 +1733,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "اذاعه عام" or MsgText[1] == "اذاعه عام " then   
-  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  ." end
   if not msg.SudoBase and not redis:get(max..'lock_brod') then 
   return "-** الاذاعه مقفوله من قبل المطور الاساسي  ❗️" 
   end
@@ -1742,7 +1742,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "اذاعه خاص" or MsgText[1] == "اذاعه خاص " then   
-  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return "-**هذا الامر يخص {المطور} فقط  ." end
   if not msg.SudoBase and not redis:get(max..'lock_brod') then 
   return "-** الاذاعه مقفوله من قبل المطور الاساسي  ❗️" 
   end
@@ -1751,7 +1751,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "اذاعه" or MsgText[1] == "اذاعه " then   
-  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  ." end
   if not msg.SudoBase and not redis:get(max..'lock_brod') then 
   return "-** الاذاعه مقفوله من قبل المطور الاساسي  ❗️" 
   end
@@ -1760,28 +1760,28 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "المطورين" or MsgText[1] == " المطورين" then
-  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  ." end
   return sudolist(msg) 
   end
    
   if MsgText[1] == "قائمه العام" or MsgText[1]=="قائمه العام " then 
-  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  \n❗️" end
+  if not msg.SudoUser then return"-**هذا الامر يخص {المطور} فقط  ." end
   return GetListGeneralBanned(msg) 
   end
   
   if MsgText[1] == "تعطيل" and (MsgText[2] == "التواصل" or MsgText[2]=="التواصل ✖️") then 
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   return lock_twasel(msg) 
   end
   
   if MsgText[1] == "تفعيل" and (MsgText[2] == "التواصل" or MsgText[2]=="التواصل 🔛") then 
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   return unlock_twasel(msg) 
   end
   
   if MsgText[1] == "حظر عام" then
   if not msg.SudoBase then 
-  return "-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" 
+  return "-**هذا الامر يخص {المطور الاساسي} فقط  ." 
   end
   
   if not MsgText[2] and msg.reply_id then 
@@ -1799,7 +1799,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "الغاء العام" or MsgText[1] == "الغاء عام" then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   
   if not MsgText[2] and msg.reply_id then 
   GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="unbanall"}) 
@@ -1819,7 +1819,7 @@ function download_to_file(url, file_name)
   
   ----------------- استقبال الرسائل ---------------
   if MsgText[1] == "الغاء الامر ✖️" or MsgText[1] == "الغاء" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   redis:del(max..'welcom:witting'..msg.sender_user_id_,
   max..'rulse:witting'..msg.sender_user_id_,
   max..'rulse:witting'..msg.sender_user_id_,
@@ -1845,7 +1845,7 @@ function download_to_file(url, file_name)
   end
   
   if (MsgText[1] == 'تحديث السورس' or MsgText[1] == 'تحديث السورس ') then
-  if not msg.SudoBase then return "-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return "-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   local GetVerison = https.request('https://github.com/MAXTELEE/max.github.io/GetVersion.txt') or 0
   if GetVerison > version then
   UpdateSourceStart = true
@@ -1859,12 +1859,12 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == 'نسخه احتياطيه للمجموعات' then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   return buck_up_groups(msg)
   end 
   
   if MsgText[1] == 'رفع نسخه الاحتياطيه' then
-  if not msg.SudoBase then return "-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return "-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   if msg.reply_id then
   GetMsgInfo(msg.chat_id_,msg.reply_id,function(arg, data)
   if data.content_.ID == 'MessageDocument' then
@@ -1885,16 +1885,16 @@ function download_to_file(url, file_name)
   end
   end,nil)
   else 
-  sendMsg(msg.chat_id_,msg.id_,"-** عذرا النسخه الاحتياطيه هذا ليست للبوت » ["..Bot_User.."]  \n❗️")
+  sendMsg(msg.chat_id_,msg.id_,"-** عذرا النسخه الاحتياطيه هذا ليست للبوت » ["..Bot_User.."]  .")
   end
   else 
-  sendMsg(msg.chat_id_,msg.id_,'-** عذرا اسم الملف غير مدعوم للنظام او لا يتوافق مع سورس سير يرجى جلب الملف الاصلي الذي قمت بسحبه وبدون تعديل ع الاسم\n❗️')
+  sendMsg(msg.chat_id_,msg.id_,'-** عذرا اسم الملف غير مدعوم للنظام او لا يتوافق مع سورس سير يرجى جلب الملف الاصلي الذي قمت بسحبه وبدون تعديل ع الاسم.')
   end  
   else
-  sendMsg(msg.chat_id_,msg.id_,'-** عذرا الملف ليس بصيغه Json !?\n❗️')
+  sendMsg(msg.chat_id_,msg.id_,'-** عذرا الملف ليس بصيغه Json !?.')
   end 
   else
-  sendMsg(msg.chat_id_,msg.id_,'-** عذرا هذا ليس ملف النسحه الاحتياطيه للمجموعات\n❗️')
+  sendMsg(msg.chat_id_,msg.id_,'-** عذرا هذا ليس ملف النسحه الاحتياطيه للمجموعات.')
   end 
   end,nil)
   else 
@@ -1904,7 +1904,7 @@ function download_to_file(url, file_name)
   end
   
   if (MsgText[1]=="تيست" or MsgText[1]=="test") then 
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   return "-البوت شـغــال 🃏" 
   end
   
@@ -1917,19 +1917,19 @@ function download_to_file(url, file_name)
   end
   
   if (MsgText[1]== "الاحصائيات " or MsgText[1]=="الاحصائيات") then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   return '-الاحصائيات 🃏 \n\n-**عدد المجموعات المفعله : '..redis:scard(max..'group:ids')..'\n-**عدد المشتركين في البوت : '..redis:scard(max..'users')..'\n'
   end
   ---------------[End Function data] -----------------------
   if MsgText[1]=="اضف رد عام" or MsgText[1]=="اضف رد عام " then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   redis:setex(max..'addrd_all:'..msg.chat_id_..msg.sender_user_id_,300,true)
   redis:del(max..'allreplay:'..msg.chat_id_..msg.sender_user_id_)
   return "-حسننا الان ارسل كلمة الرد العام ➿\n"
   end
   
   if MsgText[1]== 'مسح' and MsgText[2]== 'الردود' then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   local names   = redis:exists(max..'replay:'..msg.chat_id_)
   local photo   = redis:exists(max..'replay_photo:group:'..msg.chat_id_)
   local voice   = redis:exists(max..'replay_voice:group:'..msg.chat_id_)
@@ -1942,7 +1942,7 @@ function download_to_file(url, file_name)
   max..'replay_animation:group:'..msg.chat_id_,max..'replay_audio:group:'..msg.chat_id_,max..'replay_sticker:group:'..msg.chat_id_,max..'replay_video:group:'..msg.chat_id_)
   return "✓ تم مسح كل الردود <"
   else
-  return '-** لا يوجد ردود ليتم مسحها \n❗️'
+  return '-** لا يوجد ردود ليتم مسحها .'
   end
   end
   
@@ -1964,19 +1964,19 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1]== 'مسح' and MsgText[2]== 'رد عام' then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   redis:set(max..'delrdall:'..msg.sender_user_id_,true) 
   return "-حسننا عزيزي  \n-الان ارسل الرد لمسحها من  المجموعات "
   end
   
   if MsgText[1]== 'مسح' and MsgText[2]== 'رد' then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   redis:set(max..'delrd:'..msg.sender_user_id_,true)
   return "-حسننا عزيزي  \n-الان ارسل الرد لمسحها من  للمجموعه "
   end
   
   if MsgText[1]== 'الردود' then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   local names   = redis:hkeys(max..'replay:'..msg.chat_id_)
   local photo   = redis:hkeys(max..'replay_photo:group:'..msg.chat_id_)
   local voice   = redis:hkeys(max..'replay_voice:group:'..msg.chat_id_)
@@ -1985,7 +1985,7 @@ function download_to_file(url, file_name)
   local sticker   = redis:hkeys(max..'replay_sticker:group:'..msg.chat_id_)
   local video   = redis:hkeys(max..'replay_video:group:'..msg.chat_id_)
   if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #video==0 then 
-  return '-**لا يوجد ردود مضافه حاليا \n❗️' 
+  return '-**لا يوجد ردود مضافه حاليا .' 
   end
   local ii = 1
   local message = '-**ردود البوت في المجموعه  :\n\n'
@@ -2009,7 +2009,7 @@ function download_to_file(url, file_name)
   local sticker   = redis:hkeys(max..'replay_sticker:group:')
   local video   = redis:hkeys(max..'replay_video:group:')
   if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #video==0 then 
-  return '-**لا يوجد ردود مضافه حاليا \n❗️' 
+  return '-**لا يوجد ردود مضافه حاليا .' 
   end
   local ii = 1
   local message = '-**الردود العامه في البوت :   :\n\n'
@@ -2025,14 +2025,14 @@ function download_to_file(url, file_name)
   
   
   if MsgText[1]=="اضف رد" and msg.GroupActive then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   redis:setex(max..'addrd:'..msg.chat_id_..msg.sender_user_id_,300,true) 
   redis:del(max..'replay1'..msg.chat_id_..msg.sender_user_id_)
   return "-حسننا , الان ارسل كلمه الرد \n-"
   end
   
   if MsgText[1] == "ضع اسم للبوت" or MsgText[1]== 'ضع اسم للبوت ©' then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   redis:setex(max..'namebot:witting'..msg.sender_user_id_,300,true)
   return"-حسننا عزيزي  \n-الان ارسل الاسم  للبوت "
   end
@@ -2081,44 +2081,23 @@ function download_to_file(url, file_name)
   
   if msg.type == 'channel' and msg.GroupActive then
   if MsgText[1] == "الاوامر" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   return [[
   ‌‌‏‌‌‏‌‌‌‌‏                                     ————————————————
-  [مسارات الاوامر العامه]
-  ————————————————
-  
-  1-|م1 > اوامر الاداره
-  ‌‏
-  2-│م2 > اوامر اعدادات المجموعة
-  ‌‏
-  3-│م3 > اوامر الحمايه
-  ‌‏
-  4-│م4 > اوامر الخدمه 
-  
-  5-│م5 > اوامر الفله الزايده
-  
-  6-│م6 > اوامر التعطيل و التفعيل 
-  
-  7-│م7 > اوامر  الوضع للمجموعه
-  
-  8-│م المطور >  اوامر المطور
-  
-  9-│اوامر الرد > لاضافة رد معين
-  
-  10-│الوسائط > لمعرفه الاعدادات
-   
-  11-│الاعدادات > عدادات المجموعه
-  
-  12-│سورس > سورس البوت
-  
-  13-|المطور > مطور البوت
-  
-  ————————————————
-  
-   ‌‌‏اذا تبي شي كلمني هنا> { ]]..SUDO_USER..[[ } ✓ ]]
+  — قائمة الأوامر ⇩
+
+  م1 .. اوامر الأداره
+  م2 .. اوامر المجموعة
+  م3 .. اوامر حماية المجموعة
+  م4 .. الاوامر العامة
+  م المطور .. اوامر المطور الاساسي
+  المطور .. معرف مطور البوت
+  سورس .. معلومات سورس البوت
+  ━━━━━━━━━━━━
+  للتواصل |{ ]]..SUDO_USER..[[ } | ]]
   end
   if MsgText[1]== 'م1' then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local text =[[1) اوامر : الرفع و التنزيل
   ———————————————
   1- رفع > تنزيل :مدير
@@ -2148,7 +2127,7 @@ function download_to_file(url, file_name)
   return false
   end
   if MsgText[1]== 'م2' then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local text = [[
   ———————————————
   م2[اوامر رؤية الاعدادات]
@@ -2188,7 +2167,7 @@ function download_to_file(url, file_name)
   return false
   end
   if MsgText[1]== 'م3' then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local text =[[————————————————
   (اوامر حمايـه المجموعه)
   ————————————————     
@@ -2225,7 +2204,7 @@ function download_to_file(url, file_name)
   return false
   end
   if MsgText[1]== 'م4' then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local text = [[
   ———————————————
   [اوامر الخدمه .]
@@ -2268,7 +2247,7 @@ function download_to_file(url, file_name)
   return false
   end
   if MsgText[1]== 'م5' then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local text =[[———————————————
   اوامر الفله الزايده 
   ———————————————
@@ -2297,7 +2276,7 @@ function download_to_file(url, file_name)
   return false
   end
   if MsgText[1]== 'م6' then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local text =[[———————————————
        اوامر التعطيل و التفعيل
   ———————————————
@@ -2320,7 +2299,7 @@ function download_to_file(url, file_name)
   return false
   end
   if MsgText[1]== 'م7' then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   local text =[[———————————————
       اوامر الوضع للمجموعه 
   ———————————————
@@ -2374,7 +2353,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1]== 'اوامر الرد' then
-  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  \n❗️" end
+  if not msg.Director then return "-**هذا الامر يخص {المطور,المنشئ,المدير} فقط  ." end
   local text = [[
    ———————————————
        [جميع اوامر الرد ]
@@ -2403,7 +2382,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "تفعيل" and MsgText[2] == "اطردني"  then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if not redis:get(max..'lave_me'..msg.chat_id_) then 
   return "-**أهلا عزيزي "..msg.TheRankCmd.."\n-** المغادره بالتاكيد تم تفعيلها\n✓" 
   else 
@@ -2412,7 +2391,7 @@ function download_to_file(url, file_name)
   end 
   end
   if MsgText[1] == "تعطيل" and MsgText[2] == "اطردني" then
-  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n❗️" end
+  if not msg.Admin then return "-**هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  ." end
   if redis:get(max..'lave_me'..msg.chat_id_) then 
   return "-**أهلا عزيزي "..msg.TheRankCmd.."\n-** المغادره من قبل البوت بالتأكيد معطله\n✓" 
   else
@@ -2463,7 +2442,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "تفعيل الاشتراك الاجباري" or MsgText[1] == "تفعيل الاشتراك الاجباري " then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   if redis:get(max..":UserNameChaneel") then
   return "-اهلا عزيزي المطور \n-الاشتراك بالتأكيد مفعل"
   else
@@ -2473,7 +2452,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "تعطيل الاشتراك الاجباري" or MsgText[1] == "تعطيل الاشتراك الاجباري " then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   local SubDel = redis:del(max..":UserNameChaneel")
   if SubDel == 1 then
   return "-تم تعطيل الاشتراك الاجباري . \n✓"
@@ -2483,7 +2462,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "الاشتراك الاجباري" or MsgText[1] == "الاشتراك الاجباري " then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   local UserChaneel = redis:get(max..":UserNameChaneel")
   if UserChaneel then
   return "-اهلا عزيزي المطور \n-الاشتراك الاجباري للقناة : ["..UserChaneel.."]\n✓"
@@ -2493,7 +2472,7 @@ function download_to_file(url, file_name)
   end
   
   if MsgText[1] == "تغيير الاشتراك الاجباري" or MsgText[1] == "تغيير الاشتراك الاجباري " then
-  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  \n❗️" end
+  if not msg.SudoBase then return"-**هذا الامر يخص {المطور الاساسي} فقط  ." end
   redis:setex(max..":ForceSub:"..msg.sender_user_id_,350,true)
   return "-مرحبا بـك في نظام الاشتراك الاجباري\n-الان ارسل معرف قـنـاتـك"
   end
@@ -2567,27 +2546,27 @@ function download_to_file(url, file_name)
   end
   
   if Black:match('تغير امر (.*)') then
-  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  \n❗️" end
+  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  ." end
   local cmd = Black:match('تغير امر (.*)') 
   redis:setex(max..'addcmd'..msg.chat_id_..msg.sender_user_id_,120,cmd)
   sendMsg(msg.chat_id_,msg.id_,'-اهلا بك عزيزي\n-الامر الي تريد تغيره الي  >'..cmd..'< \n-ارسله الان\n✓ ')
   end
   
   if Black and (Black:match('^delcmd (.*)') or Black:match('^مسح امر (.*)')) then
-  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  \n❗️" end
+  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  ." end
   local cmd = Black:match('^delcmd (.*)') or Black:match('^مسح امر (.*)')
   redis:hdel(max..'CmD:'..msg.chat_id_,cmd)
   redis:srem(max..'CmDlist:'..msg.chat_id_,cmd)
   sendMsg(msg.chat_id_,msg.id_,"-اهلا عزيزي\nالامر >"..cmd.."\n- تم مسحه من قائمه الاوامر\n✓")
   end
   if Black == 'مسح قائمه الاوامر' or Black == 'مسح قائمه الاوامر' then
-  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  \n❗️" end
+  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  ." end
   redis:del(max..'CmD:'..msg.chat_id_)
   redis:del(max..'CmDlist:'..msg.chat_id_)
   sendMsg(msg.chat_id_,msg.id_,"- اهلا عزيزي تم مسح قائمه الاوامر")
   end
   if Black == "قائمه الاوامر" then
-  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  \n❗️" end
+  if not msg.Kara then return "-**هذا الامر يخص {المنشئ الاساسي,المطور,المطور الاساسي} فقط  ." end
   local CmDlist = redis:smembers(max..'CmDlist:'..msg.chat_id_)
   local t = '- قائمه الاوامر : \n'
   for k,v in pairs(CmDlist) do
@@ -2682,7 +2661,7 @@ function download_to_file(url, file_name)
   local msg_pv = tonumber(redis:get(max..'user:'..msg.sender_user_id_..':msgs') or 0)
   if msg_pv > 5 then
   redis:setex(max..':mute_pv:'..msg.sender_user_id_,18000,true)   
-  return sendMsg(msg.chat_id_,0,'*-* تم حظرك من البوت بسبب التكرار \n❗️') 
+  return sendMsg(msg.chat_id_,0,'*-* تم حظرك من البوت بسبب التكرار .') 
   end
   redis:setex(max..'user:'..msg.sender_user_id_..':msgs',2,msg_pv+1)
   end
@@ -3309,7 +3288,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) and not redis:get(max..':User_Fwd_Msg:'..msg.sender_user_id_..':flood') then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع اعادة التوجيه  \n❗️"
+  local msgx = "-عذرا ممنوع اعادة التوجيه  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) 
@@ -3336,7 +3315,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا الانلاين مقفول  \n❗️"
+  local msgx = "-عذرا الانلاين مقفول  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3352,7 +3331,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-ممنوع ارسال الكليشه والا سوف تجبرني على طردك  \n❗️"
+  local msgx = "-ممنوع ارسال الكليشه والا سوف تجبرني على طردك  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"🙍🏻‍♂╽العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3389,7 +3368,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-ممنوع ارسال الروابط  \n❗️"
+  local msgx = "-ممنوع ارسال الروابط  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3404,7 +3383,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-ممنوع ارسال روابط الويب   \n❗️"
+  local msgx = "-ممنوع ارسال روابط الويب   ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3419,7 +3398,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-ممنوع ارسال التاك  \n❗️"
+  local msgx = "-ممنوع ارسال التاك  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3434,7 +3413,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-ممنوع ارسال المعرف   \n❗️"
+  local msgx = "-ممنوع ارسال المعرف   ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) 
@@ -3450,7 +3429,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-ممنوع ارسال الماركدوان  \n❗️"
+  local msgx = "-ممنوع ارسال الماركدوان  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3465,7 +3444,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-ممنوع ارسال روابط الويب   \n❗️"
+  local msgx = "-ممنوع ارسال روابط الويب   ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3481,7 +3460,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذراً ممنوع التعديل تم المسح \n❗️"
+  local msgx = "-عذراً ممنوع التعديل تم المسح ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3497,7 +3476,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال الفيديو  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال الفيديو  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3513,7 +3492,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال الصور  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال الصور  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3539,7 +3518,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال الفيديو  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال الفيديو  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)   
@@ -3564,7 +3543,7 @@ function download_to_file(url, file_name)
   end
    if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال الملفات  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال الملفات  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3579,7 +3558,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال الملصقات  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال الملصقات  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)   
@@ -3595,7 +3574,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال الصور المتحركه  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال الصور المتحركه  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)   
@@ -3620,7 +3599,7 @@ function download_to_file(url, file_name)
   end
    if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال جهات الاتصال  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال جهات الاتصال  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3635,7 +3614,7 @@ function download_to_file(url, file_name)
   end
    if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال الموقع  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال الموقع  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3650,7 +3629,7 @@ function download_to_file(url, file_name)
   end
    if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال البصمات  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال البصمات  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)   
@@ -3665,7 +3644,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال الصوت  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال الصوت  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3680,7 +3659,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا الكيبورد مقفول  \n❗️"
+  local msgx = "-عذرا الكيبورد مقفول  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3704,7 +3683,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال الروابط  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال الروابط  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3723,7 +3702,7 @@ function download_to_file(url, file_name)
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
   GetUserID(msg.sender_user_id_,function(arg,data)
-  local msgx = "-عذرا ممنوع ارسال روابط الويب  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال روابط الويب  ."
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
   SendMention(msg.chat_id_,data.id_,msg.id_,"-العضو » "..USERNAME..'\n'..msgx,12,USERCAR) end,nil)
@@ -3737,7 +3716,7 @@ function download_to_file(url, file_name)
   return sendMsg(msg.chat_id_,msg.id_,'-** لا يمكنني مسح الرساله المخالفه .\n-** لست مشرف او ليس لدي صلاحيه  الحذف \n ❗️')    
   end
   if redis:get(max..'lock_woring'..msg.chat_id_) then
-  local msgx = "-عذرا ممنوع ارسال التاك او المعرف  \n❗️"
+  local msgx = "-عذرا ممنوع ارسال التاك او المعرف  ."
   GetUserID(msg.sender_user_id_,function(arg,data)
   if data.username_ then USERNAME = '@'..data.username_ else USERNAME = FlterName(data.first_name_..' '..(data.last_name_ or "")) end
   local USERCAR = utf8.len(USERNAME)
@@ -3984,8 +3963,9 @@ function download_to_file(url, file_name)
   return sendMsg(msg.chat_id_,msg.id_,"تقلع .") 
   end
   elseif Text== "تف" then return sendMsg(msg.chat_id_,msg.id_,"وجعع .")
-  elseif Text== "مستر" then return sendMsg(msg.chat_id_,msg.id_,"[Mister .](t.me/TVWTT")
-  elseif Text== "حسين" then return sendMsg(msg.chat_id_,msg.id_,"[ Lucifer.](t.me/xxxli")
+  elseif Text== "عزام" then return sendMsg(msg.chat_id_,msg.id_,"[Azzam .](t.me/eeeel")
+  elseif Text== "خالد" then return sendMsg(msg.chat_id_,msg.id_,"[ Khalid .](t.me/eeeeul")
+  elseif Text== "طلال" then return sendMsg(msg.chat_id_,msg.id_,"[ طلال الحارثي.. ](t.me/eeuiii")
   elseif Text== "احبنك" then return sendMsg(msg.chat_id_,msg.id_,"اعشقنك .")
   elseif Text== "اعشقك"  then return sendMsg(msg.chat_id_,msg.id_,"اموت فيك .")
   elseif Text== "وينك"  then return sendMsg(msg.chat_id_,msg.id_,"بقلبك .")
@@ -4138,7 +4118,7 @@ function download_to_file(url, file_name)
   local DaysEx = (redis:ttl(max..'ExpireDate:'..msg.chat_id_) / 86400)
   if tonumber(DaysEx) > 0.208 and ExpireDate ~= -1 and msg.Admin then
   if tonumber(DaysEx + 1) == 1 and not msg.SudoUser then
-  sendMsg(msg.chat_id_,'-باقي يوم واحد وينتهي الاشتراك \n-راسل المطور للتجديد '..SUDO_USER..'\n❗️')
+  sendMsg(msg.chat_id_,'-باقي يوم واحد وينتهي الاشتراك \n-راسل المطور للتجديد '..SUDO_USER..' .')
   end 
   end 
   end
