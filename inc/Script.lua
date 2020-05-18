@@ -2459,7 +2459,7 @@ end
 
 if MsgText[1] == "سورس" or MsgText[1]=="السورس" then
 return [[
-  [مطور السورس](t.me/VVVKC )
+  [مطور السورس](t.me/VVVKC)
 [قناة السورس](t.me/sourcesir)
 
 ⠀⠀
